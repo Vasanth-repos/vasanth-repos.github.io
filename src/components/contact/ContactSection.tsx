@@ -52,7 +52,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
   };
 
   return (
-    <section id="contact" className="relative py-24 bg-[#060709] border-t border-white/10 overflow-hidden">
+    <section id="contact" className="relative py-20 bg-[#060709] border-t border-white/10 overflow-hidden">
       
       {/* Ambient Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[var(--accent-color)]/10 rounded-full blur-[160px] pointer-events-none" />
@@ -61,7 +61,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
         
         {/* Section Header */}
         <Reveal direction="up" duration={500}>
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 text-xs font-mono text-zinc-300">
               <span className="w-2 h-2 rounded-full dynamic-accent-bg animate-ping" />
               <span className="w-2 h-2 rounded-full dynamic-accent-bg -ml-4" />
@@ -73,27 +73,27 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
               <span className="dynamic-accent text-glow">WORTH BUILDING?</span>
             </h2>
 
-            <p className="text-base text-zinc-300 font-sans leading-relaxed">
+            <p className="text-sm sm:text-base text-zinc-300 font-sans leading-relaxed">
               I am actively seeking SDE internship and full-time opportunities, hackathon collaborations, and technically challenging engineering projects.
             </p>
           </div>
         </Reveal>
 
         {/* 2-Column Grid: Direct Action Channels on Left, Interactive Form on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: Direct Links & 1-Click Copy */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className="lg:col-span-5 space-y-3.5">
             
             {/* 1-Click Email Copy Card */}
             <Reveal direction="left" duration={500}>
-              <SpotlightCard className="p-6 space-y-4 hud-corner">
+              <SpotlightCard className="p-5 space-y-3.5 hud-corner">
                 <div className="text-xs font-mono text-zinc-400 flex items-center justify-between">
                   <span>PRIMARY COMMS CHANNEL</span>
                   <span className="text-emerald-400 font-bold">ACTIVE INBOX</span>
                 </div>
 
-                <div className="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/10 font-mono text-xs text-white">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10 font-mono text-xs text-white">
                   <div className="flex items-center gap-2.5 truncate">
                     <Mail className="w-4 h-4 dynamic-accent shrink-0" />
                     <span className="truncate">{PERSONAL_INFO.socialLinks.email}</span>
@@ -125,12 +125,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
 
             {/* Social Grid Links */}
             <div className="grid grid-cols-2 gap-3 font-mono text-xs">
-              <Reveal direction="up" delay={100} duration={500}>
+              <Reveal direction="up" delay={80} duration={500}>
                 <a
                   href={PERSONAL_INFO.socialLinks.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-4 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-white/30 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group"
+                  className="p-3.5 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-white/30 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group"
                 >
                   <div className="p-2 rounded-lg bg-white/5 text-zinc-400 group-hover:text-white group-hover:bg-white/10 transition-colors">
                     <GithubIcon className="w-5 h-5" />
@@ -142,12 +142,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                 </a>
               </Reveal>
 
-              <Reveal direction="up" delay={150} duration={500}>
+              <Reveal direction="up" delay={120} duration={500}>
                 <a
                   href={PERSONAL_INFO.socialLinks.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-4 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-sky-400/40 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group"
+                  className="p-3.5 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-sky-400/40 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group"
                 >
                   <div className="p-2 rounded-lg bg-sky-950/50 text-sky-400 group-hover:bg-sky-900/50 transition-colors">
                     <LinkedinIcon className="w-5 h-5" />
@@ -159,12 +159,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                 </a>
               </Reveal>
 
-              <Reveal direction="up" delay={200} duration={500} className="col-span-2">
+              <Reveal direction="up" delay={160} duration={500} className="col-span-2">
                 <a
                   href={PERSONAL_INFO.socialLinks.leetcode}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-4 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-amber-400/40 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group w-full"
+                  className="p-3.5 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-amber-400/40 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group w-full"
                 >
                   <div className="p-2 rounded-lg bg-amber-950/50 text-amber-400 group-hover:bg-amber-900/50 transition-colors">
                     <Terminal className="w-5 h-5" />
@@ -182,9 +182,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
           {/* Right Column: Interactive Contact Form */}
           <div className="lg:col-span-7">
             <Reveal direction="right" duration={600}>
-              <div className="p-6 sm:p-8 rounded-2xl bg-[#0b0e17] border border-white/15 shadow-2xl hud-corner">
+              <div className="p-6 sm:p-7 rounded-2xl bg-[#0b0e17] border border-white/15 shadow-2xl hud-corner">
                 
-                <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-5">
                   <div className="flex items-center gap-2 text-xs font-mono text-zinc-300 font-bold">
                     <MessageSquare className="w-4 h-4 dynamic-accent" />
                     <span>TRANSMIT DIRECT MESSAGE</span>
@@ -193,7 +193,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                 </div>
 
                 {isSent ? (
-                  <div className="py-12 text-center space-y-3 font-mono">
+                  <div className="py-10 text-center space-y-3 font-mono">
                     <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
                       <Check className="w-6 h-6" />
                     </div>
@@ -209,9 +209,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4 font-mono text-xs">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-1.5">
+                  <form onSubmit={handleSubmit} className="space-y-3.5 font-mono text-xs">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      <div className="space-y-1">
                         <label className="text-zinc-400">YOUR NAME *</label>
                         <input
                           type="text"
@@ -219,11 +219,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           placeholder="e.g. Alex Morgan"
-                          className="w-full p-3 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
+                          className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
                         />
                       </div>
 
-                      <div className="space-y-1.5">
+                      <div className="space-y-1">
                         <label className="text-zinc-400">YOUR EMAIL *</label>
                         <input
                           type="email"
@@ -231,38 +231,38 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="alex@company.com"
-                          className="w-full p-3 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
+                          className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-1.5">
+                    <div className="space-y-1">
                       <label className="text-zinc-400">SUBJECT / PURPOSE</label>
                       <input
                         type="text"
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        placeholder="e.g. SDE Opportunity / Technical Collaboration / Hackathon Team"
-                        className="w-full p-3 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
+                        placeholder="e.g. SDE Opportunity / Technical Collaboration"
+                        className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
                       />
                     </div>
 
-                    <div className="space-y-1.5">
+                    <div className="space-y-1">
                       <label className="text-zinc-400">MESSAGE *</label>
                       <textarea
                         required
-                        rows={4}
+                        rows={3}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         placeholder="Details regarding your project, system architecture requirements, or role specifications..."
-                        className="w-full p-3 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors resize-none"
+                        className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors resize-none"
                       />
                     </div>
 
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3.5 px-6 rounded-lg dynamic-accent-bg text-white font-mono text-xs font-bold hover:brightness-110 shadow-lg shadow-[var(--accent-glow)] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="w-full py-3 px-6 rounded-lg dynamic-accent-bg text-white font-mono text-xs font-bold hover:brightness-110 shadow-lg shadow-[var(--accent-glow)] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <span>TRANSMITTING PACKETS...</span>

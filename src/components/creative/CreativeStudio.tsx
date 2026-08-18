@@ -13,7 +13,7 @@ export const CreativeStudio: React.FC = () => {
   };
 
   return (
-    <section id="creative" className="relative py-24 bg-[#06070a] border-t border-white/10 overflow-hidden">
+    <section id="creative" className="relative py-20 bg-[#06070a] border-t border-white/10 overflow-hidden">
       
       {/* Ambient Glow */}
       <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-rose-500/5 rounded-full blur-[140px] pointer-events-none" />
@@ -22,7 +22,7 @@ export const CreativeStudio: React.FC = () => {
         
         {/* Section Header */}
         <Reveal direction="up" duration={500}>
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/10 gap-6">
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-rose-400 mb-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse" />
@@ -42,9 +42,9 @@ export const CreativeStudio: React.FC = () => {
         </Reveal>
 
         {/* 3-Column Creative Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {CREATIVE_SHOWCASE.map((item, idx) => (
-            <Reveal key={item.id} direction="up" delay={idx * 100} duration={600}>
+            <Reveal key={item.id} direction="up" delay={idx * 80} duration={600}>
               <div className="rounded-2xl bg-[#0b0e17] border border-white/10 overflow-hidden shadow-xl hover:border-rose-400/40 transition-all duration-300 hud-corner flex flex-col justify-between group h-full">
                 {/* Media Image Showcase with Hover Zoom */}
                 <div
@@ -80,9 +80,9 @@ export const CreativeStudio: React.FC = () => {
                 </div>
 
                 {/* Text Info */}
-                <div className="p-6 space-y-3">
+                <div className="p-5 space-y-2.5">
                   <div className="text-[11px] font-mono text-zinc-400">{item.role}</div>
-                  <h3 className="text-lg font-bold font-mono text-white group-hover:text-rose-300 transition-colors">
+                  <h3 className="text-base font-bold font-mono text-white group-hover:text-rose-300 transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs text-zinc-300 font-sans leading-relaxed">

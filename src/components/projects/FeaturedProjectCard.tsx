@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Cpu } from 'lucide-react';
+import { ArrowRight, Cpu, Layers } from 'lucide-react';
 import { Project } from '../../types';
 import { playCyberSound } from '../ui/AudioToggle';
 import { GithubIcon } from '../ui/BrandIcons';
@@ -17,7 +17,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
       <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--accent-color)]/10 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Top Banner Tag */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-white/10">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-white/10">
         <div className="flex items-center gap-2">
           <span className="px-3 py-1 rounded-full dynamic-accent-bg text-white font-mono text-[11px] font-bold tracking-wider uppercase shadow-md">
             {project.badge || 'FLAGSHIP ARCHITECTURE'}
@@ -32,7 +32,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
         </div>
       </div>
 
-      {/* Main Grid: Info on Left, Interactive System Flow Diagram on Right */}
+      {/* Main Grid: Info on Left, UI Mockup & System Flow on Right */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-6 items-center">
         
         {/* Left Column: Description & Value Proposition */}
@@ -45,7 +45,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
           </p>
 
           {/* Quick Problem Callout */}
-          <div className="p-4 rounded-xl bg-black/40 border border-white/10 space-y-1 text-xs font-mono">
+          <div className="p-4 rounded-xl bg-black/50 border border-white/10 space-y-1 text-xs font-mono">
             <span className="text-rose-400 font-bold">// THE PROBLEM SOLVED:</span>
             <p className="text-zinc-300">
               DSA concept retention decay after weeks of practice. Computes real-time forgetfulness curves to surface forgotten edge cases before tech interviews.
@@ -68,7 +68,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
           </div>
 
           {/* Actions */}
-          <div className="flex flex-wrap items-center gap-3 pt-4">
+          <div className="flex flex-wrap items-center gap-3 pt-3">
             <button
               onClick={() => {
                 playCyberSound('open');
@@ -94,41 +94,62 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
           </div>
         </div>
 
-        {/* Right Column: Interactive System Architecture Flow */}
-        <div className="lg:col-span-6">
-          <div className="p-5 sm:p-6 rounded-xl bg-[#090b12] border border-white/15 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs font-mono text-zinc-400">
+        {/* Right Column: Visual UI Mockup + Interactive Flow Nodes */}
+        <div className="lg:col-span-6 space-y-4">
+          
+          {/* UI Mockup Card with Scanline and Cyber Frame */}
+          {project.image && (
+            <div className="relative rounded-xl overflow-hidden border border-white/20 bg-black shadow-2xl group/img">
+              <div className="aspect-[16/9] w-full overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080a10] via-transparent to-transparent opacity-60" />
+              <div className="scanline-overlay opacity-20" />
+              
+              {/* Telemetry Tag */}
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-3 py-1.5 rounded bg-black/80 backdrop-blur-md border border-white/15 text-[10px] font-mono">
+                <span className="flex items-center gap-1.5 text-white">
+                  <Layers className="w-3.5 h-3.5 dynamic-accent" />
+                  <span>LIVE REVISION ENGINE PREVIEW</span>
+                </span>
+                <span className="text-emerald-400 font-semibold">94.8% RECALL OPTIMIZATION</span>
+              </div>
+            </div>
+          )}
+
+          {/* Compact System Flow Diagram */}
+          <div className="p-4 rounded-xl bg-[#090b12] border border-white/15 space-y-2.5">
+            <div className="flex items-center justify-between pb-2 border-b border-white/10 text-xs font-mono text-zinc-400">
               <span className="flex items-center gap-2">
-                <Cpu className="w-4 h-4 dynamic-accent" />
-                <span>SYSTEM FLOW DIAGRAM</span>
+                <Cpu className="w-3.5 h-3.5 dynamic-accent" />
+                <span>PIPELINE ARCHITECTURE</span>
               </span>
-              <span className="text-[10px] text-zinc-500">AI RECOMMENDATION PIPELINE</span>
+              <span className="text-[10px] text-zinc-500">MICROSERVICES FLOW</span>
             </div>
 
-            {/* Step Nodes in Vertical / Responsive Chain */}
-            <div className="space-y-2.5">
+            {/* 4 compact step pills in a 2x2 grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {project.architecture.steps.map((step, idx) => (
                 <div
                   key={idx}
-                  className="p-3 rounded-lg bg-[#0e121c] border border-white/10 flex items-start gap-3 hover:border-[var(--accent-color)]/40 transition-colors"
+                  className="p-2.5 rounded-lg bg-[#0e121c] border border-white/10 flex items-start gap-2.5 hover:border-[var(--accent-color)]/40 transition-colors"
                 >
-                  <div className="w-6 h-6 rounded bg-white/5 border border-white/10 flex items-center justify-center font-mono text-xs font-bold dynamic-accent shrink-0 mt-0.5">
+                  <div className="w-5 h-5 rounded bg-white/5 border border-white/10 flex items-center justify-center font-mono text-[11px] font-bold dynamic-accent shrink-0 mt-0.5">
                     {idx + 1}
                   </div>
                   <div>
-                    <div className="text-xs font-bold font-mono text-white">{step.title}</div>
-                    <div className="text-[11px] text-zinc-400 mt-0.5 leading-snug">{step.desc}</div>
+                    <div className="text-xs font-bold font-mono text-white leading-tight">{step.title}</div>
+                    <div className="text-[10px] text-zinc-400 mt-0.5 line-clamp-1">{step.desc}</div>
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* Footer formula banner */}
-            <div className="p-2.5 rounded bg-white/5 border border-white/10 text-[11px] font-mono text-zinc-400 flex items-center justify-between">
-              <span>DECAY FORMULA: R = e^(-t / S)</span>
-              <span className="text-emerald-400 font-bold">OPTIMIZED</span>
-            </div>
           </div>
+
         </div>
 
       </div>

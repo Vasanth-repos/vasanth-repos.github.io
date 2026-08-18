@@ -29,7 +29,7 @@ export const ProjectsSection: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="relative py-24 bg-[#06070a] border-t border-white/10 overflow-hidden">
+    <section id="projects" className="relative py-20 bg-[#06070a] border-t border-white/10 overflow-hidden">
       
       {/* Ambient background glow */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--accent-color)]/5 rounded-full blur-[140px] pointer-events-none" />
@@ -38,7 +38,7 @@ export const ProjectsSection: React.FC = () => {
         
         {/* Section Header */}
         <Reveal direction="up" duration={500}>
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/10 gap-6">
             <div>
               <div className="flex items-center gap-2 text-xs font-mono dynamic-accent mb-2">
                 <span className="w-1.5 h-1.5 rounded-full dynamic-accent-bg" />
@@ -58,8 +58,8 @@ export const ProjectsSection: React.FC = () => {
         </Reveal>
 
         {/* Featured Flagship Project: Memory Stack */}
-        <Reveal direction="up" delay={100} duration={600}>
-          <div className="mb-16">
+        <Reveal direction="up" delay={80} duration={600}>
+          <div className="mb-12">
             <FeaturedProjectCard
               project={featuredProject}
               onOpenCaseStudy={(proj) => setSelectedCaseStudy(proj)}
@@ -68,7 +68,7 @@ export const ProjectsSection: React.FC = () => {
         </Reveal>
 
         {/* Other Projects Filter Tabs */}
-        <Reveal direction="fade" delay={150} duration={400}>
+        <Reveal direction="fade" delay={120} duration={400}>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-white/10">
             <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
               <Filter className="w-4 h-4 dynamic-accent" />
@@ -96,7 +96,7 @@ export const ProjectsSection: React.FC = () => {
         {/* Other Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, idx) => (
-            <Reveal key={project.id} direction="up" delay={idx * 80} duration={500}>
+            <Reveal key={project.id} direction="up" delay={idx * 60} duration={500}>
               <ProjectCard
                 project={project}
                 onOpenCaseStudy={(proj) => setSelectedCaseStudy(proj)}

@@ -103,7 +103,7 @@ export const AILabTerminal: React.FC = () => {
   };
 
   return (
-    <section id="ailab" className="relative py-24 bg-[#060709] border-t border-white/10 overflow-hidden">
+    <section id="ailab" className="relative py-20 bg-[#060709] border-t border-white/10 overflow-hidden">
       
       {/* Ambient Glow */}
       <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
@@ -112,7 +112,7 @@ export const AILabTerminal: React.FC = () => {
         
         {/* Section Header */}
         <Reveal direction="up" duration={500}>
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/10 gap-6">
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
@@ -140,7 +140,7 @@ export const AILabTerminal: React.FC = () => {
               <div className="rounded-2xl bg-[#090c14] border border-white/15 shadow-2xl overflow-hidden hud-corner">
                 
                 {/* Terminal Titlebar */}
-                <div className="flex items-center justify-between px-4 py-3 bg-[#0e121d] border-b border-white/10">
+                <div className="flex items-center justify-between px-4 py-2.5 bg-[#0e121d] border-b border-white/10">
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1.5">
                       <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
@@ -157,7 +157,7 @@ export const AILabTerminal: React.FC = () => {
                 </div>
 
                 {/* Quick Command Buttons */}
-                <div className="flex flex-wrap items-center gap-1.5 p-3 bg-[#0a0d17] border-b border-white/5 text-xs font-mono">
+                <div className="flex flex-wrap items-center gap-1.5 p-2.5 bg-[#0a0d17] border-b border-white/5 text-xs font-mono">
                   <span className="text-zinc-500 text-[11px] mr-1">QUICK RUN:</span>
                   {['models', 'status', 'benchmark', 'ast-test', 'help'].map((cmd) => (
                     <button
@@ -171,9 +171,9 @@ export const AILabTerminal: React.FC = () => {
                 </div>
 
                 {/* Terminal Scroll Output Window */}
-                <div className="p-5 font-mono text-xs max-h-80 overflow-y-auto space-y-4">
+                <div className="p-4 sm:p-5 font-mono text-xs max-h-72 overflow-y-auto space-y-3.5">
                   {history.map((h, idx) => (
-                    <div key={idx} className="space-y-1.5">
+                    <div key={idx} className="space-y-1">
                       <div className="flex items-center gap-2 text-zinc-400">
                         <span className="text-cyan-400 font-bold">$</span>
                         <span className="text-white">{h.command}</span>
@@ -185,7 +185,7 @@ export const AILabTerminal: React.FC = () => {
                 </div>
 
                 {/* Terminal Interactive Input Field */}
-                <div className="p-3 bg-[#0c101a] border-t border-white/10 flex items-center gap-2">
+                <div className="p-2.5 bg-[#0c101a] border-t border-white/10 flex items-center gap-2">
                   <span className="text-cyan-400 font-mono font-bold pl-2">$</span>
                   <input
                     type="text"
@@ -213,15 +213,15 @@ export const AILabTerminal: React.FC = () => {
           </div>
 
           {/* Right Column: AI Philosophy & Architecture Highlights */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className="lg:col-span-5 space-y-3.5">
             
             <Reveal direction="right" delay={100} duration={500}>
-              <SpotlightCard className="p-6 hud-corner space-y-3">
+              <SpotlightCard className="p-5 hud-corner space-y-2.5">
                 <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
                   <Sparkles className="w-4 h-4" />
                   <span>OFFLINE-FIRST AI PARADIGM</span>
                 </div>
-                <h3 className="text-lg font-bold font-mono text-white">
+                <h3 className="text-base font-bold font-mono text-white">
                   Zero-Leak Local Inference
                 </h3>
                 <p className="text-xs text-zinc-300 font-sans leading-relaxed">
@@ -230,8 +230,8 @@ export const AILabTerminal: React.FC = () => {
               </SpotlightCard>
             </Reveal>
 
-            <Reveal direction="right" delay={200} duration={500}>
-              <SpotlightCard className="p-6 hud-corner space-y-3">
+            <Reveal direction="right" delay={180} duration={500}>
+              <SpotlightCard className="p-5 hud-corner space-y-2.5">
                 <div className="text-xs font-mono text-zinc-400">CURRENT AI STACK</div>
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono">
                   <div className="p-2.5 rounded bg-white/5 border border-white/5">
