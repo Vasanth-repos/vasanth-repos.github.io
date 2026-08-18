@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/hero/Hero';
 import { ProofStrip } from './components/metrics/ProofStrip';
+import { TechMarquee } from './components/ui/TechMarquee';
 import { EngineeringMindset } from './components/mindset/EngineeringMindset';
 import { DsaCommandCenter } from './components/dsa/DsaCommandCenter';
 import { ProjectsSection } from './components/projects/ProjectsSection';
@@ -43,7 +44,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#060709] text-zinc-100 selection:bg-[var(--accent-color)] selection:text-white relative font-sans">
+    <div className="min-h-screen bg-[#060709] text-zinc-100 selection:bg-[var(--accent-color)] selection:text-white relative font-sans overflow-x-hidden">
       {/* Custom Precision HUD Cursor */}
       <CustomCursor />
 
@@ -54,6 +55,7 @@ export const App: React.FC = () => {
       <main>
         <Hero />
         <ProofStrip />
+        <TechMarquee />
         <EngineeringMindset />
         <DsaCommandCenter />
         <ProjectsSection />

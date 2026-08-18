@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Play, Sparkles } from 'lucide-react';
 import { playCyberSound } from '../ui/AudioToggle';
+import { Reveal } from '../ui/Reveal';
+import { SpotlightCard } from '../ui/SpotlightCard';
 
 interface CliHistory {
   command: string;
@@ -109,140 +111,148 @@ export const AILabTerminal: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10 gap-6">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              <span>05 // EXPERIMENTS & LOCAL LLMS</span>
+        <Reveal direction="up" duration={500}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10 gap-6">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                <span>05 // EXPERIMENTS & LOCAL LLMS</span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight leading-tight">
+                AI Lab &<br />
+                <span className="text-cyan-400 text-glow">Local Intelligence.</span>
+              </h2>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight leading-tight">
-              AI Lab &<br />
-              <span className="text-cyan-400 text-glow">Local Intelligence.</span>
-            </h2>
+            <div className="max-w-md">
+              <p className="text-sm font-mono text-zinc-400">
+                Exploring the frontiers of local offline models (Ollama + Qwen2.5-Coder), vector retrieval pipelines, and AI-assisted software engineering.
+              </p>
+            </div>
           </div>
-          <div className="max-w-md">
-            <p className="text-sm font-mono text-zinc-400">
-              Exploring the frontiers of local offline models (Ollama + Qwen2.5-Coder), vector retrieval pipelines, and AI-assisted software engineering.
-            </p>
-          </div>
-        </div>
+        </Reveal>
 
         {/* AI Lab Main Grid: Terminal on Left, Highlights & Capabilities on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: Interactive CLI Sandbox */}
           <div className="lg:col-span-7">
-            <div className="rounded-2xl bg-[#090c14] border border-white/15 shadow-2xl overflow-hidden hud-corner">
-              
-              {/* Terminal Titlebar */}
-              <div className="flex items-center justify-between px-4 py-3 bg-[#0e121d] border-b border-white/10">
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+            <Reveal direction="left" duration={600}>
+              <div className="rounded-2xl bg-[#090c14] border border-white/15 shadow-2xl overflow-hidden hud-corner">
+                
+                {/* Terminal Titlebar */}
+                <div className="flex items-center justify-between px-4 py-3 bg-[#0e121d] border-b border-white/10">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                    </div>
+                    <span className="text-xs font-mono text-zinc-400 ml-2">
+                      ai-lab@vasanthabalan:~ (ollama-sandbox)
+                    </span>
                   </div>
-                  <span className="text-xs font-mono text-zinc-400 ml-2">
-                    ai-lab@vasanthabalan:~ (ollama-sandbox)
+                  <span className="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded bg-cyan-950/50 border border-cyan-500/30">
+                    ● LOCAL LLM ACTIVE
                   </span>
                 </div>
-                <span className="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded bg-cyan-950/50 border border-cyan-500/30">
-                  ● LOCAL LLM ACTIVE
-                </span>
-              </div>
 
-              {/* Quick Command Buttons */}
-              <div className="flex flex-wrap items-center gap-1.5 p-3 bg-[#0a0d17] border-b border-white/5 text-xs font-mono">
-                <span className="text-zinc-500 text-[11px] mr-1">QUICK RUN:</span>
-                {['models', 'status', 'benchmark', 'ast-test', 'help'].map((cmd) => (
-                  <button
-                    key={cmd}
-                    onClick={() => handleRunCommand(cmd)}
-                    className="px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-cyan-300 hover:text-white transition-colors text-[11px]"
-                  >
-                    ${cmd}
-                  </button>
-                ))}
-              </div>
+                {/* Quick Command Buttons */}
+                <div className="flex flex-wrap items-center gap-1.5 p-3 bg-[#0a0d17] border-b border-white/5 text-xs font-mono">
+                  <span className="text-zinc-500 text-[11px] mr-1">QUICK RUN:</span>
+                  {['models', 'status', 'benchmark', 'ast-test', 'help'].map((cmd) => (
+                    <button
+                      key={cmd}
+                      onClick={() => handleRunCommand(cmd)}
+                      className="px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-cyan-300 hover:text-white transition-colors text-[11px]"
+                    >
+                      ${cmd}
+                    </button>
+                  ))}
+                </div>
 
-              {/* Terminal Scroll Output Window */}
-              <div className="p-5 font-mono text-xs max-h-80 overflow-y-auto space-y-4">
-                {history.map((h, idx) => (
-                  <div key={idx} className="space-y-1.5">
-                    <div className="flex items-center gap-2 text-zinc-400">
-                      <span className="text-cyan-400 font-bold">$</span>
-                      <span className="text-white">{h.command}</span>
+                {/* Terminal Scroll Output Window */}
+                <div className="p-5 font-mono text-xs max-h-80 overflow-y-auto space-y-4">
+                  {history.map((h, idx) => (
+                    <div key={idx} className="space-y-1.5">
+                      <div className="flex items-center gap-2 text-zinc-400">
+                        <span className="text-cyan-400 font-bold">$</span>
+                        <span className="text-white">{h.command}</span>
+                      </div>
+                      <div className="pl-4 border-l border-white/10">{h.output}</div>
                     </div>
-                    <div className="pl-4 border-l border-white/10">{h.output}</div>
-                  </div>
-                ))}
-                <div ref={terminalEndRef} />
-              </div>
+                  ))}
+                  <div ref={terminalEndRef} />
+                </div>
 
-              {/* Terminal Interactive Input Field */}
-              <div className="p-3 bg-[#0c101a] border-t border-white/10 flex items-center gap-2">
-                <span className="text-cyan-400 font-mono font-bold pl-2">$</span>
-                <input
-                  type="text"
-                  value={inputVal}
-                  onChange={(e) => setInputVal(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && inputVal.trim()) {
-                      handleRunCommand(inputVal);
-                    }
-                  }}
-                  placeholder="Type an AI command (e.g. 'benchmark', 'models', 'help')..."
-                  className="w-full bg-transparent text-xs font-mono text-white placeholder-zinc-500 focus:outline-none"
-                />
-                <button
-                  onClick={() => inputVal.trim() && handleRunCommand(inputVal)}
-                  className="p-1.5 rounded bg-white/10 hover:bg-cyan-500 hover:text-black text-zinc-300 transition-colors"
-                  aria-label="Run command"
-                >
-                  <Play className="w-3.5 h-3.5" />
-                </button>
-              </div>
+                {/* Terminal Interactive Input Field */}
+                <div className="p-3 bg-[#0c101a] border-t border-white/10 flex items-center gap-2">
+                  <span className="text-cyan-400 font-mono font-bold pl-2">$</span>
+                  <input
+                    type="text"
+                    value={inputVal}
+                    onChange={(e) => setInputVal(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && inputVal.trim()) {
+                        handleRunCommand(inputVal);
+                      }
+                    }}
+                    placeholder="Type an AI command (e.g. 'benchmark', 'models', 'help')..."
+                    className="w-full bg-transparent text-xs font-mono text-white placeholder-zinc-500 focus:outline-none"
+                  />
+                  <button
+                    onClick={() => inputVal.trim() && handleRunCommand(inputVal)}
+                    className="p-1.5 rounded bg-white/10 hover:bg-cyan-500 hover:text-black text-zinc-300 transition-colors"
+                    aria-label="Run command"
+                  >
+                    <Play className="w-3.5 h-3.5" />
+                  </button>
+                </div>
 
-            </div>
+              </div>
+            </Reveal>
           </div>
 
           {/* Right Column: AI Philosophy & Architecture Highlights */}
           <div className="lg:col-span-5 space-y-4">
             
-            <div className="p-6 rounded-xl bg-[#0b0e17] border border-white/10 space-y-3 hud-corner">
-              <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
-                <Sparkles className="w-4 h-4" />
-                <span>OFFLINE-FIRST AI PARADIGM</span>
-              </div>
-              <h3 className="text-lg font-bold font-mono text-white">
-                Zero-Leak Local Inference
-              </h3>
-              <p className="text-xs text-zinc-300 font-sans leading-relaxed">
-                By running quantized models (Qwen2.5-Coder 7B) through Ollama locally on consumer hardware, proprietary code stays 100% private, zero token API costs are incurred, and development workflows work uninterrupted during outages.
-              </p>
-            </div>
+            <Reveal direction="right" delay={100} duration={500}>
+              <SpotlightCard className="p-6 hud-corner space-y-3">
+                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
+                  <Sparkles className="w-4 h-4" />
+                  <span>OFFLINE-FIRST AI PARADIGM</span>
+                </div>
+                <h3 className="text-lg font-bold font-mono text-white">
+                  Zero-Leak Local Inference
+                </h3>
+                <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                  By running quantized models (Qwen2.5-Coder 7B) through Ollama locally on consumer hardware, proprietary code stays 100% private, zero token API costs are incurred, and development workflows work uninterrupted during outages.
+                </p>
+              </SpotlightCard>
+            </Reveal>
 
-            <div className="p-6 rounded-xl bg-[#0b0e17] border border-white/10 space-y-3 hud-corner">
-              <div className="text-xs font-mono text-zinc-400">CURRENT AI STACK</div>
-              <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                <div className="p-2.5 rounded bg-white/5 border border-white/5">
-                  <div className="text-zinc-500 text-[10px]">LOCAL RUNTIME</div>
-                  <div className="text-white font-bold mt-0.5">Ollama Daemon</div>
+            <Reveal direction="right" delay={200} duration={500}>
+              <SpotlightCard className="p-6 hud-corner space-y-3">
+                <div className="text-xs font-mono text-zinc-400">CURRENT AI STACK</div>
+                <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                  <div className="p-2.5 rounded bg-white/5 border border-white/5">
+                    <div className="text-zinc-500 text-[10px]">LOCAL RUNTIME</div>
+                    <div className="text-white font-bold mt-0.5">Ollama Daemon</div>
+                  </div>
+                  <div className="p-2.5 rounded bg-white/5 border border-white/5">
+                    <div className="text-zinc-500 text-[10px]">CODE LLM</div>
+                    <div className="text-cyan-300 font-bold mt-0.5">Qwen2.5-Coder 7B</div>
+                  </div>
+                  <div className="p-2.5 rounded bg-white/5 border border-white/5">
+                    <div className="text-zinc-500 text-[10px]">CLOUD FALLBACK</div>
+                    <div className="text-white font-bold mt-0.5">Gemini 2.5 Flash</div>
+                  </div>
+                  <div className="p-2.5 rounded bg-white/5 border border-white/5">
+                    <div className="text-zinc-500 text-[10px]">VECTOR STORE</div>
+                    <div className="text-emerald-400 font-bold mt-0.5">ChromaDB Local</div>
+                  </div>
                 </div>
-                <div className="p-2.5 rounded bg-white/5 border border-white/5">
-                  <div className="text-zinc-500 text-[10px]">CODE LLM</div>
-                  <div className="text-cyan-300 font-bold mt-0.5">Qwen2.5-Coder 7B</div>
-                </div>
-                <div className="p-2.5 rounded bg-white/5 border border-white/5">
-                  <div className="text-zinc-500 text-[10px]">CLOUD FALLBACK</div>
-                  <div className="text-white font-bold mt-0.5">Gemini 2.5 Flash</div>
-                </div>
-                <div className="p-2.5 rounded bg-white/5 border border-white/5">
-                  <div className="text-zinc-500 text-[10px]">VECTOR STORE</div>
-                  <div className="text-emerald-400 font-bold mt-0.5">ChromaDB Local</div>
-                </div>
-              </div>
-            </div>
+              </SpotlightCard>
+            </Reveal>
 
           </div>
 

@@ -128,6 +128,7 @@
   height: 8px;
   border-top: 2px solid var(--accent-color);
   border-left: 2px solid var(--accent-color);
+  pointer-events: none;
 }
 
 .hud-corner::after {
@@ -139,6 +140,7 @@
   height: 8px;
   border-bottom: 2px solid var(--accent-color);
   border-right: 2px solid var(--accent-color);
+  pointer-events: none;
 }
 
 .dynamic-accent {
@@ -160,6 +162,61 @@
 /* Glowing text */
 .text-glow {
   text-shadow: 0 0 14px var(--accent-glow);
+}
+
+/* Continuous Infinite Hardware-Accelerated Marquee */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Floating animation */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* Smooth motion default */
