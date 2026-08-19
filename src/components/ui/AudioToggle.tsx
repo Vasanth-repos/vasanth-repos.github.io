@@ -74,18 +74,18 @@ export const AudioToggle: React.FC<{ onToggle?: (enabled: boolean) => void }> = 
     <button
       onClick={toggle}
       title={isEnabled ? 'Audio Feedback ON' : 'Audio Feedback MUTED'}
-      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-white/10 bg-white/5 hover:border-[var(--accent-color)] text-xs font-mono text-zinc-300 hover:text-white transition-colors"
+      className="flex items-center gap-1.5 px-2.5 h-8 rounded-lg border border-white/10 bg-white/5 hover:border-[var(--accent-color)] text-xs font-mono text-zinc-300 hover:text-white transition-colors"
       aria-label="Toggle sound feedback"
     >
       {isEnabled ? (
         <>
           <Volume2 className="w-3.5 h-3.5 dynamic-accent" />
-          <span className="hidden sm:inline">SFX ON</span>
+          <span className="hidden sm:inline">SFX</span>
         </>
       ) : (
         <>
           <VolumeX className="w-3.5 h-3.5 text-zinc-500" />
-          <span className="hidden sm:inline text-zinc-500">SFX OFF</span>
+          <span className="hidden sm:inline text-zinc-500">MUTE</span>
         </>
       )}
     </button>
