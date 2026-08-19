@@ -7,11 +7,11 @@ import { SpotlightCard } from '../ui/SpotlightCard';
 export const HackathonWarRoom: React.FC = () => {
   const sprintStages = [
     { name: 'IDEA', desc: 'Identify genuine user pain points' },
-    { name: 'VALIDATE', desc: 'Feasibility & tech differentiator' },
+    { name: 'VALIDATE', desc: 'Feasibility & differentiator' },
     { name: 'PROTOTYPE', desc: 'Core algorithmic spine' },
     { name: 'BUILD', desc: 'Full-stack integration' },
-    { name: 'BREAK & DEBUG', desc: 'Stress test under heavy edge cases' },
-    { name: 'SHIP & DEMO', desc: '100% reliable live judging flow' },
+    { name: 'DEBUG', desc: 'Stress test under edge cases' },
+    { name: 'SHIP & DEMO', desc: '100% reliable live judging' },
   ];
 
   return (
@@ -44,8 +44,8 @@ export const HackathonWarRoom: React.FC = () => {
         </Reveal>
 
         {/* The 6-Stage Hackathon Build Pipeline Bar */}
-        <Reveal direction="up" delay={80} duration={600}>
-          <div className="mb-10 p-5 rounded-2xl bg-[#0c0f18] border border-white/15 hud-corner">
+        <Reveal direction="up" delay={80} duration={500}>
+          <div className="mb-10 p-4 sm:p-5 rounded-2xl bg-[#0c0f18] border border-white/15 hud-corner">
             <div className="text-xs font-mono text-zinc-400 mb-3 flex items-center justify-between">
               <span className="flex items-center gap-2">
                 <Flame className="w-4 h-4 text-amber-400" />
@@ -58,43 +58,43 @@ export const HackathonWarRoom: React.FC = () => {
               {sprintStages.map((stage, idx) => (
                 <div
                   key={idx}
-                  className="p-3 rounded-lg bg-white/5 border border-white/10 flex flex-col justify-between space-y-1.5 hover:border-amber-400/40 transition-colors"
+                  className="p-2.5 rounded-lg bg-white/5 border border-white/10 flex flex-col justify-between space-y-1 hover:border-amber-400/40 transition-colors"
                 >
                   <div className="flex items-center justify-between text-[10px] font-mono font-bold text-amber-400">
-                    <span>PHASE 0{idx + 1}</span>
+                    <span>0{idx + 1}</span>
                     {idx < sprintStages.length - 1 && <span className="opacity-40">→</span>}
                   </div>
-                  <div className="text-xs font-bold font-mono text-white">{stage.name}</div>
-                  <div className="text-[10px] text-zinc-400 leading-snug">{stage.desc}</div>
+                  <div className="text-xs font-bold font-mono text-white truncate">{stage.name}</div>
+                  <div className="text-[10px] text-zinc-400 leading-snug line-clamp-1">{stage.desc}</div>
                 </div>
               ))}
             </div>
           </div>
         </Reveal>
 
-        {/* Hackathon Build Dossiers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Hackathon Build Dossiers Grid - Equal Heights */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {HACKATHON_SPRINT.map((hack, idx) => (
-            <Reveal key={hack.id} direction="up" delay={idx * 80} duration={500}>
-              <SpotlightCard className="p-6 hud-corner flex flex-col justify-between space-y-4 h-full">
+            <Reveal key={hack.id} direction="up" delay={idx * 70} duration={500} className="h-full">
+              <SpotlightCard className="p-5 sm:p-6 hud-corner flex flex-col justify-between h-full space-y-4">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="px-2 py-0.5 rounded bg-amber-950/40 border border-amber-500/30 text-amber-300">
                       {hack.timeframe}
                     </span>
-                    <span className="text-zinc-500">{hack.track}</span>
+                    <span className="text-zinc-500 text-[11px]">{hack.track}</span>
                   </div>
 
-                  <h3 className="text-lg font-bold font-mono text-white">
+                  <h3 className="text-base sm:text-lg font-bold font-mono text-white leading-snug">
                     {hack.title}
                   </h3>
 
-                  <div className="p-3 rounded-lg bg-white/5 border border-white/5 text-xs font-mono text-zinc-300">
+                  <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 text-xs font-mono text-zinc-300">
                     <span className="text-amber-400 font-bold">PROJECT: </span>
                     {hack.projectBuilt}
                   </div>
 
-                  <div className="space-y-2 text-xs font-mono text-zinc-400">
+                  <div className="space-y-1.5 text-xs font-mono text-zinc-400">
                     <div>
                       <span className="text-zinc-500">Critical Challenge: </span>
                       <span className="text-zinc-300">{hack.keyChallenge}</span>
@@ -107,7 +107,7 @@ export const HackathonWarRoom: React.FC = () => {
                 </div>
 
                 {/* Technologies */}
-                <div className="pt-3 border-t border-white/5 flex flex-wrap gap-1.5">
+                <div className="pt-3 border-t border-white/5 flex flex-wrap gap-1">
                   {hack.tech.map((t, tIdx) => (
                     <span
                       key={tIdx}

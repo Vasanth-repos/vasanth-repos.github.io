@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Send, Copy, Check, Terminal, MessageSquare } from 'lucide-react';
+import { Mail, Send, Copy, Check, Terminal, MessageSquare, Clock } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { playCyberSound } from '../ui/AudioToggle';
 import { GithubIcon, LinkedinIcon } from '../ui/BrandIcons';
@@ -80,14 +80,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
         </Reveal>
 
         {/* 2-Column Grid: Direct Action Channels on Left, Interactive Form on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           
           {/* Left Column: Direct Links & 1-Click Copy */}
-          <div className="lg:col-span-5 space-y-3.5">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
             
             {/* 1-Click Email Copy Card */}
             <Reveal direction="left" duration={500}>
-              <SpotlightCard className="p-5 space-y-3.5 hud-corner">
+              <SpotlightCard className="p-4 sm:p-5 space-y-3 hud-corner">
                 <div className="text-xs font-mono text-zinc-400 flex items-center justify-between">
                   <span>PRIMARY COMMS CHANNEL</span>
                   <span className="text-emerald-400 font-bold">ACTIVE INBOX</span>
@@ -118,42 +118,42 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                 </div>
 
                 <p className="text-xs text-zinc-400 font-sans">
-                  Expect responses within 24 hours for engineering roles and hackathon invites.
+                  Direct responses for SDE opportunities, algorithmic discussions, and hackathon teams.
                 </p>
               </SpotlightCard>
             </Reveal>
 
             {/* Social Grid Links */}
-            <div className="grid grid-cols-2 gap-3 font-mono text-xs">
-              <Reveal direction="up" delay={80} duration={500}>
+            <div className="grid grid-cols-2 gap-2.5 font-mono text-xs flex-1">
+              <Reveal direction="up" delay={80} duration={500} className="h-full">
                 <a
                   href={PERSONAL_INFO.socialLinks.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-3.5 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-white/30 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group"
+                  className="p-3.5 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-white/30 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group h-full"
                 >
                   <div className="p-2 rounded-lg bg-white/5 text-zinc-400 group-hover:text-white group-hover:bg-white/10 transition-colors">
-                    <GithubIcon className="w-5 h-5" />
+                    <GithubIcon className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-white font-bold">GitHub</div>
+                    <div className="text-white font-bold text-xs">GitHub</div>
                     <div className="text-[10px] text-zinc-500">@vasanthabalan</div>
                   </div>
                 </a>
               </Reveal>
 
-              <Reveal direction="up" delay={120} duration={500}>
+              <Reveal direction="up" delay={120} duration={500} className="h-full">
                 <a
                   href={PERSONAL_INFO.socialLinks.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-3.5 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-sky-400/40 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group"
+                  className="p-3.5 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-sky-400/40 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group h-full"
                 >
                   <div className="p-2 rounded-lg bg-sky-950/50 text-sky-400 group-hover:bg-sky-900/50 transition-colors">
-                    <LinkedinIcon className="w-5 h-5" />
+                    <LinkedinIcon className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-white font-bold">LinkedIn</div>
+                    <div className="text-white font-bold text-xs">LinkedIn</div>
                     <div className="text-[10px] text-zinc-500">Connect</div>
                   </div>
                 </a>
@@ -164,117 +164,130 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                   href={PERSONAL_INFO.socialLinks.leetcode}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-3.5 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-amber-400/40 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group w-full"
+                  className="p-3 rounded-xl bg-[#0b0e17] border border-white/10 hover:border-amber-400/40 text-zinc-300 hover:text-white transition-all flex items-center gap-3 hud-corner group w-full"
                 >
                   <div className="p-2 rounded-lg bg-amber-950/50 text-amber-400 group-hover:bg-amber-900/50 transition-colors">
-                    <Terminal className="w-5 h-5" />
+                    <Terminal className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-white font-bold">LeetCode (400+ Problems)</div>
+                    <div className="text-white font-bold text-xs">LeetCode Profile (400+ Solved)</div>
                     <div className="text-[10px] text-zinc-500">Verified Algorithmic Solutions</div>
                   </div>
                 </a>
               </Reveal>
             </div>
 
+            {/* Availability SLA Pill */}
+            <Reveal direction="up" delay={200} duration={500}>
+              <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between text-[10px] font-mono text-zinc-400">
+                <span className="flex items-center gap-1.5 text-emerald-400">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>Response SLA: &lt; 24 Hours</span>
+                </span>
+                <span className="text-zinc-500">LOCATION: CHENNAI (IST)</span>
+              </div>
+            </Reveal>
+
           </div>
 
           {/* Right Column: Interactive Contact Form */}
-          <div className="lg:col-span-7">
-            <Reveal direction="right" duration={600}>
-              <div className="p-6 sm:p-7 rounded-2xl bg-[#0b0e17] border border-white/15 shadow-2xl hud-corner">
+          <div className="lg:col-span-7 flex flex-col justify-between">
+            <Reveal direction="right" duration={500} className="h-full">
+              <div className="p-5 sm:p-6 rounded-2xl bg-[#0b0e17] border border-white/15 shadow-2xl hud-corner h-full flex flex-col justify-between">
                 
-                <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-5">
-                  <div className="flex items-center gap-2 text-xs font-mono text-zinc-300 font-bold">
-                    <MessageSquare className="w-4 h-4 dynamic-accent" />
-                    <span>TRANSMIT DIRECT MESSAGE</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-zinc-500">ENCRYPTED // TLS 1.3</span>
-                </div>
-
-                {isSent ? (
-                  <div className="py-10 text-center space-y-3 font-mono">
-                    <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
-                      <Check className="w-6 h-6" />
+                <div>
+                  <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
+                    <div className="flex items-center gap-2 text-xs font-mono text-zinc-300 font-bold">
+                      <MessageSquare className="w-4 h-4 dynamic-accent" />
+                      <span>TRANSMIT DIRECT MESSAGE</span>
                     </div>
-                    <h3 className="text-lg font-bold text-white">Transmission Acknowledged</h3>
-                    <p className="text-xs text-zinc-400 max-w-sm mx-auto">
-                      Your message has been logged. I will review your requirements and respond promptly.
-                    </p>
-                    <button
-                      onClick={() => setIsSent(false)}
-                      className="mt-4 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-xs text-zinc-300 font-mono"
-                    >
-                      Send Another Message
-                    </button>
+                    <span className="text-[10px] font-mono text-zinc-500">TLS 1.3 ENCRYPTED</span>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-3.5 font-mono text-xs">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+
+                  {isSent ? (
+                    <div className="py-8 text-center space-y-3 font-mono">
+                      <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
+                        <Check className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-lg font-bold text-white">Transmission Acknowledged</h3>
+                      <p className="text-xs text-zinc-400 max-w-sm mx-auto">
+                        Your message has been logged. I will review your requirements and respond promptly.
+                      </p>
+                      <button
+                        onClick={() => setIsSent(false)}
+                        className="mt-3 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-xs text-zinc-300 font-mono"
+                      >
+                        Send Another Message
+                      </button>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-3 font-mono text-xs">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="space-y-1">
+                          <label className="text-zinc-400 text-[11px]">YOUR NAME *</label>
+                          <input
+                            type="text"
+                            required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                            placeholder="e.g. Alex Morgan"
+                            className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
+                          />
+                        </div>
+
+                        <div className="space-y-1">
+                          <label className="text-zinc-400 text-[11px]">YOUR EMAIL *</label>
+                          <input
+                            type="email"
+                            required
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            placeholder="alex@company.com"
+                            className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
+                          />
+                        </div>
+                      </div>
+
                       <div className="space-y-1">
-                        <label className="text-zinc-400">YOUR NAME *</label>
+                        <label className="text-zinc-400 text-[11px]">SUBJECT / PURPOSE</label>
                         <input
                           type="text"
-                          required
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="e.g. Alex Morgan"
+                          value={formData.subject}
+                          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                          placeholder="e.g. SDE Opportunity / Technical Collaboration"
                           className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
                         />
                       </div>
 
                       <div className="space-y-1">
-                        <label className="text-zinc-400">YOUR EMAIL *</label>
-                        <input
-                          type="email"
+                        <label className="text-zinc-400 text-[11px]">MESSAGE *</label>
+                        <textarea
                           required
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="alex@company.com"
-                          className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
+                          rows={3}
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          placeholder="Details regarding your project, system architecture requirements, or role specifications..."
+                          className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors resize-none"
                         />
                       </div>
-                    </div>
 
-                    <div className="space-y-1">
-                      <label className="text-zinc-400">SUBJECT / PURPOSE</label>
-                      <input
-                        type="text"
-                        value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        placeholder="e.g. SDE Opportunity / Technical Collaboration"
-                        className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors"
-                      />
-                    </div>
-
-                    <div className="space-y-1">
-                      <label className="text-zinc-400">MESSAGE *</label>
-                      <textarea
-                        required
-                        rows={3}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder="Details regarding your project, system architecture requirements, or role specifications..."
-                        className="w-full p-2.5 rounded-lg bg-[#07090e] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-[var(--accent-color)] transition-colors resize-none"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-3 px-6 rounded-lg dynamic-accent-bg text-white font-mono text-xs font-bold hover:brightness-110 shadow-lg shadow-[var(--accent-glow)] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
-                    >
-                      {isSubmitting ? (
-                        <span>TRANSMITTING PACKETS...</span>
-                      ) : (
-                        <>
-                          <span>TRANSMIT MESSAGE</span>
-                          <Send className="w-4 h-4" />
-                        </>
-                      )}
-                    </button>
-                  </form>
-                )}
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full py-2.5 px-6 rounded-lg dynamic-accent-bg text-white font-mono text-xs font-bold hover:brightness-110 shadow-lg shadow-[var(--accent-glow)] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                      >
+                        {isSubmitting ? (
+                          <span>TRANSMITTING PACKETS...</span>
+                        ) : (
+                          <>
+                            <span>TRANSMIT MESSAGE</span>
+                            <Send className="w-3.5 h-3.5" />
+                          </>
+                        )}
+                      </button>
+                    </form>
+                  )}
+                </div>
 
               </div>
             </Reveal>
