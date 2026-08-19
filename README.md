@@ -1,12 +1,14 @@
 # Vasanthabalan B — Personal Developer Portfolio
 
+[![Live Demo](https://img.shields.io/badge/Live_Portfolio-vasanth--repos.github.io-ff2a44?style=for-the-badge&logo=github)](https://vasanth-repos.github.io/public_portfolio/)
 [![Production Build](https://img.shields.io/badge/Build-Passing-emerald?style=for-the-badge&logo=vite)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
 > **"Building systems. Solving problems. Exploring AI."**  
-> Computer Science Engineering Student @ Chennai Institute of Technology
+> Computer Science Engineering Student @ Chennai Institute of Technology  
+> 🌐 **Live Website**: [https://vasanth-repos.github.io/public_portfolio/](https://vasanth-repos.github.io/public_portfolio/)
 
 ---
 
