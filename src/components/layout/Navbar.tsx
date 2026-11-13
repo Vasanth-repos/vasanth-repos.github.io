@@ -18,7 +18,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, onStartTou
     { id: 'projects', label: 'Projects' },
     { id: 'ailab', label: 'AI Lab' },
     { id: 'skills', label: 'Skills' },
-    { id: 'creative', label: 'Creative' },
     { id: 'about', label: 'About' },
     { id: 'contact', label: 'Contact' },
   ];

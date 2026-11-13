@@ -8,7 +8,6 @@ import { EngineeringMindset } from './components/mindset/EngineeringMindset';
 import { ProjectsSection } from './components/projects/ProjectsSection';
 import { AILabTerminal } from './components/ailab/AILabTerminal';
 import { TechConstellation } from './components/skills/TechConstellation';
-import { CreativeStudio } from './components/creative/CreativeStudio';
 import { AboutSection } from './components/about/AboutSection';
 import { ContactSection } from './components/contact/ContactSection';
 import { Footer } from './components/layout/Footer';
@@ -113,9 +112,6 @@ export const App: React.FC = () => {
 
         {/* Technical Skill Radar & Constellation */}
         <TechConstellation />
-
-        {/* Creative Media Studio & Gallery */}
-        <CreativeStudio />
 
         {/* About Trajectory & Roadmap */}
         <AboutSection />

@@ -16,7 +16,6 @@ export const TOUR_SECTIONS: TourSection[] = [
   { id: 'projects', title: 'Projects', headline: 'Memory Stack & Production Systems' },
   { id: 'ailab', title: 'AI Sandbox', headline: 'Local Quantized LLMs & Code Intelligence' },
   { id: 'skills', title: 'Tech Radar', headline: 'Languages, Frameworks, Architecture' },
-  { id: 'creative', title: 'Creative', headline: 'DaVinci Resolve Studio & Visual Systems' },
   { id: 'about', title: 'Trajectory', headline: 'Engineering Roadmap & Evolution' },
   { id: 'contact', title: 'Transmission', headline: 'Open for SDE Roles & Engineering Inquiries' },
 ];
