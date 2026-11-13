@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { ArrowRight, Terminal as TerminalIcon, ChevronDown, Play, CheckCircle2 } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { ParticleCanvas } from './ParticleCanvas';
 import { playCyberSound } from '../ui/AudioToggle';
 import { GithubIcon, LinkedinIcon } from '../ui/BrandIcons';
 import { Reveal } from '../ui/Reveal';
+import { dispatchCoreDrag } from '../canvas/ScrollTechCore';
 
 interface HeroProps {
   onStartTour?: () => void;
@@ -16,6 +17,36 @@ export const Hero: React.FC<HeroProps> = ({ onStartTour }) => {
     const target = document.getElementById('terminal') || document.getElementById('metrics');
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Drag interaction to spin 3D Quantum Core from Hero viewport
+  const isDraggingRef = useRef(false);
+  const lastPosRef = useRef({ x: 0, y: 0 });
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    isDraggingRef.current = true;
+    lastPosRef.current = { x: e.clientX, y: e.clientY };
+    playCyberSound('hover');
+    try {
+      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    } catch {}
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+    const deltaX = e.clientX - lastPosRef.current.x;
+    const deltaY = e.clientY - lastPosRef.current.y;
+    lastPosRef.current = { x: e.clientX, y: e.clientY };
+    dispatchCoreDrag(deltaX, deltaY);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+      try {
+        (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+      } catch {}
     }
   };
 
@@ -151,43 +182,57 @@ export const Hero: React.FC<HeroProps> = ({ onStartTour }) => {
 
           </div>
 
-          {/* Right Column: Steve Jobs Style Editorial Portrait Card */}
+          {/* Right Column: Interactive 3D Quantum Core Viewport (Traverses page on scroll) */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-            <Reveal direction="fade" delay={120} duration={600} className="w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[380px] relative flex items-center justify-center">
+            <Reveal direction="fade" delay={120} duration={600} className="w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] relative flex items-center justify-center">
               
               {/* Atmospheric Cyber Back-Glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-[var(--accent-color)]/20 blur-[100px] pointer-events-none -z-10" />
               <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-cyan-500/15 blur-[90px] pointer-events-none -z-10" />
 
-              {/* The Framed Portrait Card (Steve Jobs Reference Layout) */}
-              <div className="relative w-full aspect-[395/560] rounded-3xl overflow-hidden border border-white/10 hover:border-white/25 bg-[#08090c] shadow-[0_25px_60px_-12px_rgba(0,0,0,0.95)] transition-all duration-500 group select-none">
-                
-                {/* Monochrome Steve Jobs Style Portrait (Default) */}
-                <img
-                  src={PERSONAL_INFO.images.heroHud}
-                  alt="Vasanthabalan B — Software Systems Engineer"
-                  width={1580}
-                  height={2240}
-                  className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                  loading="eager"
-                />
+              {/* Interactive 3D Viewport HUD Frame with Drag & Spin Physics */}
+              <div
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerLeave={handlePointerUp}
+                className="relative w-full aspect-square rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/30 bg-[#08090c]/40 backdrop-blur-sm shadow-[0_25px_60px_-12px_rgba(0,0,0,0.95)] transition-all duration-300 group cursor-grab active:cursor-grabbing select-none"
+                title="Drag to spin the 3D Quantum Core · Scroll to navigate"
+              >
+                {/* Tech HUD Header */}
+                <div className="absolute top-3.5 left-4 right-4 flex items-center justify-between text-[10px] font-mono pointer-events-none z-10">
+                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-cyan-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                    <span>SYSTEM NODE // QUANTUM CORE</span>
+                  </div>
+                  <div className="text-zinc-500 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span>60 FPS</span>
+                  </div>
+                </div>
 
-                {/* Studio Color Overlay (Smooth Reveal on Hover) */}
-                <img
-                  src={PERSONAL_INFO.images.heroColor || PERSONAL_INFO.images.heroHud}
-                  alt="Vasanthabalan B (Studio Color)"
-                  width={1580}
-                  height={2240}
-                  className="absolute inset-0 w-full h-full object-cover object-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out pointer-events-none group-hover:scale-105 transition-transform duration-700"
-                  loading="eager"
-                />
+                {/* Precision HUD Corner Brackets */}
+                <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-cyan-500/40 pointer-events-none" />
+                <div className="absolute top-2 right-2 w-3.5 h-3.5 border-t-2 border-r-2 border-cyan-500/40 pointer-events-none" />
+                <div className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-cyan-500/40 pointer-events-none" />
+                <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-cyan-500/40 pointer-events-none" />
 
-                {/* Subtle Inset Rim Ring */}
-                <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10 group-hover:ring-white/20 pointer-events-none transition-colors" />
+                {/* Subtle Viewport Grid Pattern */}
+                <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none opacity-40" />
 
-                {/* Soft Bottom Card Vignette */}
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#08090c] to-transparent pointer-events-none" />
+                {/* Tech HUD Footer with Live Guidance */}
+                <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-[10px] font-mono pointer-events-none z-10">
+                  <span className="text-zinc-500 uppercase tracking-wider">
+                    GIMBAL: 3-AXIS
+                  </span>
+                  <div className="flex items-center gap-1 text-[var(--accent-color)] font-semibold tracking-wider uppercase">
+                    <span>DRAG TO ROTATE · SCROLL TO TRAVERSE</span>
+                    <span className="animate-bounce">▾</span>
+                  </div>
+                </div>
 
+                {/* Subtle Inset Ring */}
+                <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10 group-hover:ring-cyan-500/20 pointer-events-none transition-colors" />
               </div>
 
             </Reveal>

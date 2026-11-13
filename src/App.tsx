@@ -17,6 +17,7 @@ import { Toast, ToastMessage } from './components/ui/Toast';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 import { AutoTourGuide } from './components/ui/AutoTourGuide';
 import { Reveal } from './components/ui/Reveal';
+import { ScrollTechCore } from './components/canvas/ScrollTechCore';
 
 export const App: React.FC = () => {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
@@ -61,6 +62,9 @@ export const App: React.FC = () => {
 
       {/* Custom Precision HUD Cursor */}
       <CustomCursor />
+
+      {/* 3D Cybernetic Tech Core Traversing Down the Page on Scroll */}
+      <ScrollTechCore />
 
       {/* Navigation Header */}
       <Navbar
