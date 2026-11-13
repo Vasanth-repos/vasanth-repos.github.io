@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight, Terminal as TerminalIcon, ChevronDown, Play, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Terminal as TerminalIcon, ChevronDown, Play, CheckCircle2, Sparkles } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { ParticleCanvas } from './ParticleCanvas';
 import { playCyberSound } from '../ui/AudioToggle';
@@ -11,6 +11,19 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onStartTour }) => {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -12;
+    setTilt({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+  };
+
   const scrollToNextSection = () => {
     playCyberSound('click');
     const target = document.getElementById('terminal') || document.getElementById('metrics');
@@ -37,114 +50,188 @@ export const Hero: React.FC<HeroProps> = ({ onStartTour }) => {
         <div className="w-full h-32 bg-gradient-to-b from-transparent via-[var(--accent-color)]/15 to-transparent animate-light-sweep" />
       </div>
 
-      {/* Main Viewport Content Frame - Centered Impactful Layout */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto text-center flex flex-col items-center space-y-6 sm:space-y-7">
-        
-        {/* Core Discipline Badge */}
-        <Reveal direction="down" duration={450}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-zinc-300 backdrop-blur-md shadow-sm">
-            <span className="w-2 h-2 rounded-full dynamic-accent-bg animate-pulse" />
-            <span>COMPUTER SCIENCE ENGINEER // CIT CHENNAI</span>
+      {/* Main Viewport Content Frame - Balanced 2-Column Layout */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-4 sm:py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          
+          {/* Left Column: Narrative Headline & CTAs */}
+          <div className="lg:col-span-7 text-left space-y-6">
+            
+            {/* Core Discipline Badge */}
+            <Reveal direction="down" duration={450}>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-zinc-300 backdrop-blur-md shadow-sm">
+                <span className="w-2 h-2 rounded-full dynamic-accent-bg animate-pulse" />
+                <span>COMPUTER SCIENCE ENGINEER // CIT CHENNAI</span>
+              </div>
+            </Reveal>
+
+            {/* Punchy Editorial Headline */}
+            <Reveal direction="left" delay={60} duration={500}>
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display tracking-tight text-white leading-[1.08]">
+                BUILDING SYSTEMS.<br />
+                <span className="dynamic-accent text-glow">SOLVING PROBLEMS.</span><br />
+                <span className="text-zinc-400">EXPLORING AI.</span>
+              </h1>
+            </Reveal>
+
+            {/* Bio Subtitle */}
+            <Reveal direction="left" delay={120} duration={500}>
+              <p className="text-base sm:text-lg text-zinc-300 max-w-2xl font-sans leading-relaxed">
+                I'm <strong className="text-white font-semibold">{PERSONAL_INFO.name}</strong>, a Computer Science Engineering student at Chennai Institute of Technology focused on Data Structures & Algorithms, full-stack systems engineering, and practical AI integrations.
+              </p>
+            </Reveal>
+
+            {/* Telemetry Proof Badges */}
+            <Reveal direction="up" delay={140} duration={500}>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono pt-1">
+                <div className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-zinc-300 flex items-center gap-2 backdrop-blur-sm">
+                  <span className="w-1.5 h-1.5 rounded-full dynamic-accent-bg" />
+                  <span>400+ LEETCODE SOLVED</span>
+                </div>
+                <div className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-zinc-300 flex items-center gap-2 backdrop-blur-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                  <span>350+ SKILLRACK</span>
+                </div>
+                <div className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-zinc-300 flex items-center gap-2 backdrop-blur-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span>4+ CORE DOMAINS</span>
+                </div>
+                <div className="px-3.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-2 font-semibold backdrop-blur-sm">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>AVAILABLE FOR SDE ROLES</span>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Action Buttons & Guided Tour Trigger */}
+            <Reveal direction="up" delay={160} duration={500}>
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <a
+                  href="#projects"
+                  onClick={() => playCyberSound('click')}
+                  className="flex items-center gap-2 px-6 py-3.5 rounded-xl dynamic-accent-bg text-white font-mono text-xs font-bold hover:brightness-110 shadow-lg shadow-[var(--accent-glow)] transition-all transform hover:-translate-y-0.5"
+                >
+                  <span>EXPLORE SYSTEMS</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+
+                {onStartTour && (
+                  <button
+                    onClick={() => {
+                      playCyberSound('click');
+                      onStartTour();
+                    }}
+                    className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-mono text-xs font-bold transition-all transform hover:-translate-y-0.5 shadow-md"
+                    title="Start an automated, smooth guided downward tour of this portfolio"
+                  >
+                    <Play className="w-3.5 h-3.5 fill-current dynamic-accent" />
+                    <span>GUIDED AUTO-TOUR</span>
+                  </button>
+                )}
+
+                <a
+                  href="#contact"
+                  onClick={() => playCyberSound('click')}
+                  className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-zinc-200 font-mono text-xs font-semibold hover:text-white transition-all transform hover:-translate-y-0.5"
+                >
+                  <TerminalIcon className="w-4 h-4 dynamic-accent" />
+                  <span>CONTACT ME</span>
+                </a>
+
+                {/* Social Quick Links */}
+                <div className="flex items-center gap-2 ml-1">
+                  <a
+                    href={PERSONAL_INFO.socialLinks.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white border border-white/10 transition-colors"
+                    aria-label="GitHub Profile"
+                  >
+                    <GithubIcon className="w-4 h-4" />
+                  </a>
+                  <a
+                    href={PERSONAL_INFO.socialLinks.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white border border-white/10 transition-colors"
+                    aria-label="LinkedIn Profile"
+                  >
+                    <LinkedinIcon className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+
           </div>
-        </Reveal>
 
-        {/* Punchy Editorial Headline */}
-        <Reveal direction="zoom" delay={60} duration={500}>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-display tracking-tight text-white leading-[1.08]">
-            BUILDING SYSTEMS.<br />
-            <span className="dynamic-accent text-glow">SOLVING PROBLEMS.</span><br />
-            <span className="text-zinc-400">EXPLORING AI.</span>
-          </h1>
-        </Reveal>
-
-        {/* Bio Subtitle */}
-        <Reveal direction="up" delay={120} duration={500}>
-          <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto font-sans leading-relaxed">
-            I'm <strong className="text-white font-semibold">{PERSONAL_INFO.name}</strong>, a Computer Science Engineering student at Chennai Institute of Technology focused on Data Structures & Algorithms, full-stack systems engineering, and practical AI integrations.
-          </p>
-        </Reveal>
-
-        {/* Telemetry Proof Badges */}
-        <Reveal direction="up" delay={140} duration={500}>
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-mono pt-1">
-            <div className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-zinc-300 flex items-center gap-2 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full dynamic-accent-bg" />
-              <span>400+ LEETCODE SOLVED</span>
-            </div>
-            <div className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-zinc-300 flex items-center gap-2 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-              <span>350+ SKILLRACK</span>
-            </div>
-            <div className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-zinc-300 flex items-center gap-2 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span>4+ CORE DOMAINS</span>
-            </div>
-            <div className="px-3.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-2 font-semibold backdrop-blur-sm">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              <span>AVAILABLE FOR SDE ROLES</span>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Action Buttons & Guided Tour Trigger */}
-        <Reveal direction="up" delay={160} duration={500}>
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            <a
-              href="#projects"
-              onClick={() => playCyberSound('click')}
-              className="flex items-center gap-2 px-6 py-3.5 rounded-xl dynamic-accent-bg text-white font-mono text-xs font-bold hover:brightness-110 shadow-lg shadow-[var(--accent-glow)] transition-all transform hover:-translate-y-0.5"
-            >
-              <span>EXPLORE SYSTEMS</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-
-            {onStartTour && (
-              <button
-                onClick={() => {
-                  playCyberSound('click');
-                  onStartTour();
+          {/* Right Column: 3D Tilt HUD Hero Portrait Card */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center">
+            <Reveal direction="zoom" delay={120} duration={500} className="w-full max-w-sm sm:max-w-md">
+              <div
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  transform: `perspective(1000px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
+                  transition: 'transform 0.15s ease-out',
                 }}
-                className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-mono text-xs font-bold transition-all transform hover:-translate-y-0.5 shadow-md"
-                title="Start an automated, smooth guided downward tour of this portfolio"
+                className="relative w-full rounded-2xl p-1 bg-gradient-to-b from-white/20 via-[var(--accent-color)]/30 to-transparent shadow-2xl group hud-corner"
               >
-                <Play className="w-3.5 h-3.5 fill-current dynamic-accent" />
-                <span>GUIDED AUTO-TOUR</span>
-              </button>
-            )}
+                {/* Inner Card Frame */}
+                <div className="relative rounded-2xl bg-[#0a0c14] overflow-hidden border border-white/15">
+                  
+                  {/* Portrait Media with HUD Reticle */}
+                  <div className="relative aspect-[3/3.8] overflow-hidden bg-black flex items-center justify-center">
+                    <img
+                      src={PERSONAL_INFO.images.heroHud}
+                      alt="Vasanthabalan B — Hero Portrait"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    />
 
-            <a
-              href="#contact"
-              onClick={() => playCyberSound('click')}
-              className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-zinc-200 font-mono text-xs font-semibold hover:text-white transition-all transform hover:-translate-y-0.5"
-            >
-              <TerminalIcon className="w-4 h-4 dynamic-accent" />
-              <span>CONTACT ME</span>
-            </a>
+                    {/* Gradient & Scanline Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c14] via-transparent to-transparent opacity-80" />
+                    <div className="scanline-overlay opacity-25" />
 
-            {/* Social Quick Links */}
-            <div className="flex items-center gap-2 ml-1">
-              <a
-                href={PERSONAL_INFO.socialLinks.github}
-                target="_blank"
-                rel="noreferrer"
-                className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white border border-white/10 transition-colors"
-                aria-label="GitHub Profile"
-              >
-                <GithubIcon className="w-4 h-4" />
-              </a>
-              <a
-                href={PERSONAL_INFO.socialLinks.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white border border-white/10 transition-colors"
-                aria-label="LinkedIn Profile"
-              >
-                <LinkedinIcon className="w-4 h-4" />
-              </a>
-            </div>
+                    {/* HUD Targeting Telemetry Header */}
+                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-zinc-300">
+                      <span className="px-2.5 py-0.5 rounded bg-black/75 backdrop-blur-md border border-white/20">
+                        TARGET: SDE // CIT CHENNAI
+                      </span>
+                      <span className="flex items-center gap-1.5 text-emerald-400 font-bold px-2.5 py-0.5 rounded bg-black/75 border border-emerald-500/30">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                        ONLINE
+                      </span>
+                    </div>
+
+                    {/* Lower Card Badge */}
+                    <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-black/85 backdrop-blur-md border border-white/15">
+                      <div className="flex items-center justify-between text-xs font-mono">
+                        <div>
+                          <div className="text-white font-bold tracking-wider uppercase flex items-center gap-1.5">
+                            <span>VASANTHABALAN B</span>
+                            <span className="w-1.5 h-1.5 rounded-full dynamic-accent-bg" />
+                          </div>
+                          <div className="text-[10px] text-zinc-400 mt-0.5">Focus. Build. Create. // Aspiring SDE</div>
+                        </div>
+                        <Sparkles className="w-4 h-4 dynamic-accent shrink-0" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Telemetry Footer Strip on Card */}
+                  <div className="p-3 bg-[#0d101a] border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-zinc-400">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full dynamic-accent-bg" />
+                      <span>400+ LEETCODE // C++ STL</span>
+                    </span>
+                    <span className="text-emerald-400 font-bold">READY TO DEPLOY</span>
+                  </div>
+
+                </div>
+              </div>
+            </Reveal>
           </div>
-        </Reveal>
 
+        </div>
       </div>
 
       {/* Smooth Downward Scroll Indicator (Homepage Anchor) */}
