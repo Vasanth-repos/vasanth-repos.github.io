@@ -166,6 +166,8 @@ export const Hero: React.FC<HeroProps> = ({ onStartTour }) => {
                 <img
                   src={PERSONAL_INFO.images.heroHud}
                   alt="Vasanthabalan B — Software Systems Engineer"
+                  width={1580}
+                  height={2240}
                   className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="eager"
                 />
@@ -174,6 +176,8 @@ export const Hero: React.FC<HeroProps> = ({ onStartTour }) => {
                 <img
                   src={PERSONAL_INFO.images.heroColor || PERSONAL_INFO.images.heroHud}
                   alt="Vasanthabalan B (Studio Color)"
+                  width={1580}
+                  height={2240}
                   className="absolute inset-0 w-full h-full object-cover object-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out pointer-events-none group-hover:scale-105 transition-transform duration-700"
                   loading="eager"
                 />
