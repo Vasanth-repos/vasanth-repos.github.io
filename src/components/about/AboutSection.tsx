@@ -63,7 +63,7 @@ export const AboutSection: React.FC = () => {
 
                   <div className="space-y-2.5 text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
                     <p>
-                      I am a Computer Science Engineering student at <strong className="text-white">Chennai Institute of Technology</strong> focused on becoming a high-impact <strong className="text-white">Software Development Engineer</strong>.
+                      I am a Computer Science Engineering student at Chennai Institute of Technology focused on Data Structures & Algorithms, full-stack systems engineering, and practical AI integrations as an aspiring <strong className="text-white">Software Development Engineer</strong>.
                     </p>
                     <p>
                       My engineering journey is grounded in continuous practice: solving over <strong className="dynamic-accent">400+ LeetCode</strong> and <strong className="text-sky-400">350+ Skillrack</strong> problems, building end-to-end full-stack systems, and rapidly shipping hackathon prototypes under hard time constraints.
@@ -112,7 +112,7 @@ export const AboutSection: React.FC = () => {
                 <div className="px-3.5 py-2 bg-black/40 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-emerald-400">
                   <span className="flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>CIT CSE DEPT</span>
+                    <span>SYSTEMS // SDE</span>
                   </span>
                   <span className="text-zinc-500">CONTINUOUS LEARNING</span>
                 </div>

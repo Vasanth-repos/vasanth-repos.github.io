@@ -106,7 +106,7 @@ export const EngineeringMindset: React.FC = () => {
                 {/* Bottom Telemetry Bar */}
                 <div className="px-3.5 py-2 bg-[#0e111a] border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-zinc-500 shrink-0">
                   <span>EDITORIAL POSTER</span>
-                  <span className="dynamic-accent font-semibold">VB // 2026</span>
+                  <span className="dynamic-accent font-semibold">MX // 2026</span>
                 </div>
               </div>
             </Reveal>

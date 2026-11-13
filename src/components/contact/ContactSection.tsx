@@ -137,7 +137,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                   </div>
                   <div>
                     <div className="text-white font-bold text-xs">GitHub</div>
-                    <div className="text-[10px] text-zinc-500">@vasanthabalan</div>
+                    <div className="text-[10px] text-zinc-500">@Vasanth-repos</div>
                   </div>
                 </a>
               </Reveal>
@@ -154,7 +154,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                   </div>
                   <div>
                     <div className="text-white font-bold text-xs">LinkedIn</div>
-                    <div className="text-[10px] text-zinc-500">Connect</div>
+                    <div className="text-[10px] text-zinc-500">/in/vasanthabalanb</div>
                   </div>
                 </a>
               </Reveal>
@@ -170,8 +170,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onShowToast }) =
                     <Terminal className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-white font-bold text-xs">LeetCode Profile (400+ Solved)</div>
-                    <div className="text-[10px] text-zinc-500">Verified Algorithmic Solutions</div>
+                    <div className="text-white font-bold text-xs">LeetCode (@Vasanththesovereign)</div>
+                    <div className="text-[10px] text-zinc-500">400+ Verified Algorithmic Solutions</div>
                   </div>
                 </a>
               </Reveal>

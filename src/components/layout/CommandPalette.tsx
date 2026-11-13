@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, Code, Cpu, Terminal, Compass, Mail, Sparkles, X, Layers, Flame, User } from 'lucide-react';
+import { Search, Cpu, Terminal, Compass, Mail, Sparkles, X, Layers, User } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { playCyberSound } from '../ui/AudioToggle';
 import { PERSONAL_INFO } from '../../data/portfolioData';
@@ -63,22 +63,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose,
       action: () => scrollToSection('projects'),
     },
     {
-      id: 'nav-dsa',
-      title: 'Go to DSA Command Center',
-      category: 'Navigation',
-      icon: <Code className="w-4 h-4 text-emerald-400" />,
-      shortcut: 'G D',
-      action: () => scrollToSection('dsa'),
-    },
-    {
-      id: 'nav-hackathons',
-      title: 'Go to Hackathon War Room',
-      category: 'Navigation',
-      icon: <Flame className="w-4 h-4 text-amber-400" />,
-      shortcut: 'G H',
-      action: () => scrollToSection('hackathons'),
-    },
-    {
       id: 'nav-ailab',
       title: 'Go to AI Lab & Local LLMs',
       category: 'Navigation',
@@ -135,6 +119,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose,
       icon: <LinkedinIcon className="w-4 h-4 text-sky-400" />,
       action: () => {
         window.open(PERSONAL_INFO.socialLinks.linkedin, '_blank');
+        onClose();
+      },
+    },
+    {
+      id: 'soc-leetcode',
+      title: 'Open LeetCode Profile (@Vasanththesovereign)',
+      category: 'Social',
+      icon: <Terminal className="w-4 h-4 text-amber-400" />,
+      action: () => {
+        window.open(PERSONAL_INFO.socialLinks.leetcode, '_blank');
         onClose();
       },
     },
@@ -212,7 +206,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose,
               setQuery(e.target.value);
               setSelectedIndex(0);
             }}
-            placeholder="Type a command or jump to section... (e.g. 'projects', 'dsa', 'copy email')"
+            placeholder="Type a command or jump to section... (e.g. 'projects', 'ailab', 'copy email')"
             className="w-full bg-transparent px-3 py-4 text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none"
           />
           {query && (

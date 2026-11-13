@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
 
           <div className="flex items-center gap-4">
             <span>Press <kbd className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-300">Ctrl + K</kbd> anywhere</span>
-            <span>CIT CHENNAI</span>
+            <span>SYSTEMS // SDE</span>
           </div>
         </div>
 

@@ -22,15 +22,15 @@ export const HeroTerminal: React.FC = () => {
         <div className="text-zinc-500">// USER PROFILE IDENTITY</div>
         <div className="flex flex-wrap gap-x-4">
           <span className="text-zinc-400">user:</span>
-          <span className="text-white font-semibold">vasanthabalan@builder-os</span>
+          <span className="text-white font-semibold">vasanthabalan@cit</span>
         </div>
         <div className="flex flex-wrap gap-x-4">
           <span className="text-zinc-400">role:</span>
-          <span className="text-emerald-400">Computer Science Engineer // Aspiring SDE</span>
+          <span className="text-emerald-400">Software Systems Engineer // Aspiring SDE</span>
         </div>
         <div className="flex flex-wrap gap-x-4">
-          <span className="text-zinc-400">institute:</span>
-          <span className="text-zinc-200">Chennai Institute of Technology</span>
+          <span className="text-zinc-400">environment:</span>
+          <span className="text-zinc-200">Chennai Institute of Technology, India</span>
         </div>
         <div className="flex flex-wrap gap-x-4">
           <span className="text-zinc-400">focus:</span>

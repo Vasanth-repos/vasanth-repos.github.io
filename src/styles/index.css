@@ -219,6 +219,74 @@
   will-change: transform;
 }
 
+/* Background Glowing Motion Orbs */
+@keyframes pulseOrb {
+  0%, 100% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translate(-50%, -24px) scale(1.18);
+    opacity: 0.22;
+  }
+}
+
+.animate-pulse-orb {
+  animation: pulseOrb 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes driftSlowA {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(40px, -35px, 0) scale(1.15);
+  }
+}
+
+.animate-drift-a {
+  animation: driftSlowA 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes driftSlowB {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-35px, 40px, 0) scale(1.2);
+  }
+}
+
+.animate-drift-b {
+  animation: driftSlowB 14s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Cyber Ambient Scan Light Sweep */
+@keyframes lightSweep {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(1000%);
+    opacity: 0;
+  }
+}
+
+.animate-light-sweep {
+  animation: lightSweep 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
 /* Smooth motion default */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

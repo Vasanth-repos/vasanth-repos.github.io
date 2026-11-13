@@ -192,7 +192,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
         {/* Modal Footer Links */}
         <div className="px-6 py-4 bg-[#090b11] border-t border-white/10 flex flex-wrap items-center justify-between gap-4 shrink-0">
           <div className="text-xs font-mono text-zinc-500">
-            VASANTHABALAN // PRODUCTION SYSTEM DOSSIER
+            VASANTHABALAN B // PRODUCTION SYSTEM DOSSIER
           </div>
           <div className="flex items-center gap-3">
             {project.links.github && (

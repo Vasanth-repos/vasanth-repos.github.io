@@ -61,7 +61,7 @@ export const AILabTerminal: React.FC = () => {
     } else if (trimmed === 'benchmark') {
       resNode = (
         <div className="space-y-0.5 text-zinc-200 text-[11px]">
-          <div className="text-emerald-400">Output: 26.4 tokens/sec | TTFT: 112ms | Memory: 4.6 GB</div>
+          <div className="text-emerald-400">Environment: Local Quantized Execution | Zero Telemetry</div>
         </div>
       );
     } else if (trimmed === 'ast-test') {

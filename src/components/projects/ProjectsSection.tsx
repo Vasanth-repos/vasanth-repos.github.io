@@ -67,43 +67,71 @@ export const ProjectsSection: React.FC = () => {
           </div>
         </Reveal>
 
-        {/* Other Projects Filter Tabs */}
-        <Reveal direction="fade" delay={120} duration={400}>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-white/10">
-            <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
-              <Filter className="w-4 h-4 dynamic-accent" />
-              <span>FILTER BY DOMAIN:</span>
-            </div>
+        {/* Other Projects (rendered dynamically if additional repositories exist) */}
+        {otherProjects.length > 0 ? (
+          <>
+            <Reveal direction="fade" delay={120} duration={400}>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-white/10">
+                <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+                  <Filter className="w-4 h-4 dynamic-accent" />
+                  <span>FILTER BY DOMAIN:</span>
+                </div>
 
-            <div className="flex flex-wrap gap-1.5">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => handleCategoryChange(cat)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
-                    activeCategory === cat
-                      ? 'dynamic-accent-bg text-white font-bold shadow-md'
-                      : 'bg-white/5 border border-white/10 text-zinc-400 hover:text-white hover:bg-white/10'
-                  }`}
-                >
-                  {cat}
-                </button>
+                <div className="flex flex-wrap gap-1.5">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => handleCategoryChange(cat)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                        activeCategory === cat
+                          ? 'dynamic-accent-bg text-white font-bold shadow-md'
+                          : 'bg-white/5 border border-white/10 text-zinc-400 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProjects.map((project, idx) => (
+                <Reveal key={project.id} direction="up" delay={idx * 60} duration={500}>
+                  <ProjectCard
+                    project={project}
+                    onOpenCaseStudy={(proj) => setSelectedCaseStudy(proj)}
+                  />
+                </Reveal>
               ))}
             </div>
-          </div>
-        </Reveal>
-
-        {/* Other Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, idx) => (
-            <Reveal key={project.id} direction="up" delay={idx * 60} duration={500}>
-              <ProjectCard
-                project={project}
-                onOpenCaseStudy={(proj) => setSelectedCaseStudy(proj)}
-              />
-            </Reveal>
-          ))}
-        </div>
+          </>
+        ) : (
+          <Reveal direction="up" delay={120} duration={500}>
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#0b0e15] border border-white/10 hud-corner flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 text-[11px] font-mono text-zinc-500">
+                  <span className="w-1.5 h-1.5 rounded-full dynamic-accent-bg" />
+                  <span>SYSTEMS PIPELINE // GENUINE BUILDS ONLY</span>
+                </div>
+                <div className="text-white font-bold font-mono text-sm sm:text-base">
+                  Additional Repositories in Active Architecture
+                </div>
+                <p className="text-xs font-mono text-zinc-400 max-w-xl">
+                  Iterating on full-stack tooling, local AI workflows, and distributed systems. Only authenticated, production-tested repositories are showcased here.
+                </p>
+              </div>
+              <a
+                href={featuredProject.links.github}
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-white transition-colors shrink-0"
+              >
+                Inspect Source Code →
+              </a>
+            </div>
+          </Reveal>
+        )}
 
       </div>
 

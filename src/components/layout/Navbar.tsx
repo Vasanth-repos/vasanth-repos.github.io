@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Command } from 'lucide-react';
+import { Menu, X, Command, Play } from 'lucide-react';
 import { ThemeAccentSwitcher } from '../ui/ThemeAccentSwitcher';
 import { AudioToggle, playCyberSound } from '../ui/AudioToggle';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 
 interface NavbarProps {
   onOpenCommandPalette: () => void;
+  onStartTour?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, onStartTour }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
 
   const navLinks = [
     { id: 'projects', label: 'Projects' },
-    { id: 'dsa', label: 'DSA' },
-    { id: 'hackathons', label: 'Hackathons' },
     { id: 'ailab', label: 'AI Lab' },
     { id: 'skills', label: 'Skills' },
     { id: 'creative', label: 'Creative' },
@@ -141,6 +140,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
           {/* Right: Clean Utility Toolset (Ctrl+K, Theme, Audio, Mobile Toggle) */}
           <div className="flex items-center gap-2 shrink-0">
             
+            {/* Guided Tour Trigger Button */}
+            {onStartTour && (
+              <button
+                onClick={() => {
+                  playCyberSound('click');
+                  onStartTour();
+                }}
+                className="hidden lg:flex items-center gap-1.5 px-2.5 h-8 rounded-lg border border-white/10 bg-white/5 hover:border-[var(--accent-color)] text-xs font-mono text-zinc-300 hover:text-white transition-colors shadow-sm"
+                title="Start Smooth Guided Auto-Tour"
+              >
+                <Play className="w-3 h-3 dynamic-accent fill-current" />
+                <span className="text-[11px]">Tour</span>
+              </button>
+            )}
+
             {/* Command Palette Button */}
             <button
               onClick={() => {

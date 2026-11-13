@@ -11,11 +11,11 @@ export const PERSONAL_INFO = {
   quote: "I don't just write code. I build solutions.",
   motto: 'Focus. Build. Create. // Discipline Today, Freedom Tomorrow.',
   socialLinks: {
-    github: 'https://github.com/vasanthabalan',
-    linkedin: 'https://linkedin.com/in/vasanthabalan',
-    leetcode: 'https://leetcode.com/vasanthabalan',
+    github: 'https://github.com/Vasanth-repos',
+    linkedin: 'https://www.linkedin.com/in/vasanthabalanb/',
+    leetcode: 'https://leetcode.com/u/Vasanththesovereign/',
     skillrack: 'https://www.skillrack.com',
-    email: 'vasanthabalan.dev@gmail.com',
+    email: 'vasanthabalanb4@gmail.com',
   },
   images: {
     heroHud: './assets/images/profile-cyber-hud.png',
@@ -45,12 +45,12 @@ export const METRICS: MetricItem[] = [
     iconName: 'BarChart3',
   },
   {
-    id: 'projects',
-    value: 10,
+    id: 'core-areas',
+    value: 4,
     suffix: '+',
-    label: 'Projects Built',
-    sublabel: 'Full-stack apps, AI tools & hackathon builds',
-    iconName: 'Rocket',
+    label: 'Core Focus Areas',
+    sublabel: 'DSA, Full-Stack, Local AI & Systems',
+    iconName: 'Cpu',
     highlight: true,
   },
   {
@@ -137,298 +137,14 @@ export const PROJECTS_DATA: Project[] = [
       'Fine-tuned local LLM for code review and automated invariant explanations'
     ],
     links: {
-      github: 'https://github.com/vasanthabalan/memory-stack',
+      github: 'https://github.com/Vasanth-repos/memory-stack',
       demo: 'https://memory-stack.vercel.app',
       docs: '#'
     }
   },
-  {
-    id: 'neuralflow-ai',
-    title: 'NeuralFlow Local Agent',
-    category: 'AI Systems',
-    tagline: 'Offline AI Development Assistant with Local LLM Orchestration',
-    description: 'A developer workflow assistant built on top of local LLMs (Qwen2.5-Coder via Ollama) and Gemini API fallback, enabling offline repository code reasoning, terminal command synthesis, and AST-aware refactoring with zero telemetry leak.',
-    status: 'Completed',
-    badge: 'AI LAB HIGHLIGHT',
-    image: './assets/images/project-neuralflow.jpg',
-    technologies: ['Node.js', 'TypeScript', 'Ollama', 'Qwen2.5-Coder', 'Gemini API', 'ChromaDB'],
-    problem: 'Cloud-only coding assistants require continuous internet connectivity, expose proprietary code bases to remote servers, and incur continuous subscription costs.',
-    solution: 'Constructed an offline-first agent that runs quantized local models through Ollama on local hardware, using local vector embeddings (ChromaDB) to ground code generation in the user’s exact repository architecture.',
-    architecture: {
-      overview: 'Local CLI and Electron interface communicating via WebSockets with a lightweight Node daemon managing Ollama model contexts and vector similarity search.',
-      steps: [
-        {
-          title: 'Code Ingestion',
-          desc: 'Parses codebase into AST chunks with semantic vector embeddings stored in local ChromaDB.',
-          icon: 'FolderSearch'
-        },
-        {
-          title: 'Context Assembly',
-          desc: 'Ranks relevant file snippets and injects system instructions tailored for coding precision.',
-          icon: 'Cpu'
-        },
-        {
-          title: 'Inference',
-          desc: 'Executes stream inference on Qwen2.5-Coder (7B quantized) at ~24 tokens/sec locally.',
-          icon: 'Sparkles'
-        }
-      ]
-    },
-    engineeringDecisions: [
-      'Structured fallback pipelines: if local inference latency exceeds threshold, query Gemini Flash API via encrypted channel.',
-      'Implemented sliding-window context compression to prevent local model context overflow on multi-file queries.'
-    ],
-    keyFeatures: [
-      '100% private offline mode with zero telemetry transmission',
-      'Local git commit message and PR description generator',
-      'AST-aware syntax error diagnosis with actionable patch previews'
-    ],
-    futureRoadmap: [
-      'Support for multi-agent peer review loop (Architect Agent + Linter Agent + Tester Agent)'
-    ],
-    links: {
-      github: 'https://github.com/vasanthabalan/neuralflow-agent',
-      demo: '#',
-      docs: '#'
-    }
-  },
-  {
-    id: 'agrishield-ai',
-    title: 'AgriShield AI',
-    category: 'Full-Stack × AgriTech',
-    tagline: 'Deep Learning Crop Pathology & Localized Advisory System',
-    description: 'Computer vision web application for rural agricultural resilience. Farmers capture leaf photographs to detect plant diseases in real time, receiving actionable remediation guidance in regional languages alongside weather risk predictions.',
-    status: 'Completed',
-    badge: 'HACKATHON WINNER CONCEPT',
-    image: './assets/images/project-agrishield.jpg',
-    technologies: ['React', 'Flask', 'PyTorch', 'MobileNetV3', 'Tailwind CSS', 'OpenWeatherMap API'],
-    problem: 'Smallholder farmers experience severe crop losses (up to 35%) because plant pathology services are geographically inaccessible or too slow to prevent blight spreading.',
-    solution: 'Trained a lightweight MobileNetV3 model on 50,000+ plant leaf images achieving 94.8% classification accuracy, deployed via an optimized Flask inference engine suitable for low-bandwidth rural connections.',
-    architecture: {
-      overview: 'PWA frontend with client-side image compression feeding a PyTorch inference pipeline and regional advisory translator.',
-      steps: [
-        {
-          title: 'Image Capture',
-          desc: 'Client-side camera capture with auto-focus and low-light enhancement filter.',
-          icon: 'Camera'
-        },
-        {
-          title: 'Model Inference',
-          desc: 'MobileNetV3 classifier outputs top-3 disease probabilities with confidence scores.',
-          icon: 'ShieldCheck'
-        },
-        {
-          title: 'Multilingual Treatment',
-          desc: 'Translates biological remedies and chemical controls into Tamil and English.',
-          icon: 'Languages'
-        }
-      ]
-    },
-    engineeringDecisions: [
-      'Quantized PyTorch weights into ONNX format, reducing model binary from 90MB to 18MB for fast mobile loading.',
-      'Designed offline caching PWA service worker so previously viewed disease remedies remain accessible in fields without signal.'
-    ],
-    keyFeatures: [
-      'Real-time leaf disease classification across 14 crop varieties',
-      'Step-by-step organic vs chemical mitigation protocols',
-      'Hyper-local precipitation and humidity forecasting'
-    ],
-    futureRoadmap: [
-      'Integration with satellite vegetation index (NDVI) mapping'
-    ],
-    links: {
-      github: 'https://github.com/vasanthabalan/agrishield-ai',
-      demo: 'https://agrishield.vercel.app',
-      docs: '#'
-    }
-  },
-  {
-    id: 'finpulse-advisory',
-    title: 'FinPulse Advisory',
-    category: 'FinTech',
-    tagline: 'Quantitative Risk Modeling & Investment Simulation Platform',
-    description: 'Modern financial analytics portal offering portfolio stress testing, Monte Carlo risk projections, and algorithmic rebalancing simulations tailored for early-career professionals.',
-    status: 'Prototype',
-    badge: 'QUANT EXPERIMENT',
-    image: './assets/images/project-finpulse.jpg',
-    technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'Chart.js', 'PostgreSQL'],
-    problem: 'Retail investors lack accessible tools to understand drawdown probability and asset correlation during volatile macroeconomic conditions.',
-    solution: 'Constructed an interactive quant dashboard that computes Sharpe ratio, Value at Risk (VaR), and simulates 1,000 Monte Carlo trajectories over 5-year investment horizons.',
-    architecture: {
-      overview: 'High-throughput Node.js backend executing statistical vector computations and serving interactive Chart.js canvas visualizations.',
-      steps: [
-        {
-          title: 'Portfolio Input',
-          desc: 'User inputs asset allocation weights across equities, fixed income, and commodities.',
-          icon: 'PieChart'
-        },
-        {
-          title: 'Historical Covariance',
-          desc: 'Fetches historical return matrices to calculate risk-adjusted Sharpe ratios.',
-          icon: 'TrendingUp'
-        },
-        {
-          title: 'Simulation',
-          desc: 'Runs 1,000 Monte Carlo iterations to map worst 5% percentile downside risk.',
-          icon: 'BarChart'
-        }
-      ]
-    },
-    engineeringDecisions: [
-      'Leveraged Web Workers for client-side Monte Carlo calculations to keep UI buttery smooth at 60fps.',
-      'Normalized financial decimal values using arbitrary-precision math libraries to eliminate floating-point rounding errors.'
-    ],
-    keyFeatures: [
-      'Interactive asset allocation slider with live covariance recalculation',
-      'Monte Carlo drawdown confidence bands (90%, 95%, 99%)',
-      'Tax-loss harvesting and rebalancing threshold alerts'
-    ],
-    futureRoadmap: [
-      'Real-time WebSocket market ticker feed integration'
-    ],
-    links: {
-      github: 'https://github.com/vasanthabalan/finpulse-advisory',
-      demo: '#',
-      docs: '#'
-    }
-  },
-  {
-    id: 'ecoroute-logistics',
-    title: 'EcoRoute Logistics',
-    category: 'Systems × IoT',
-    tagline: 'Smart Waste Collection & Dynamic Vehicle Routing Optimization',
-    description: 'Urban municipal route optimization engine that solves capacitated vehicle routing problems (CVRP) to minimize fuel consumption and carbon footprint in municipal waste management.',
-    status: 'Completed',
-    badge: 'OPTIMIZATION ENGINE',
-    image: './assets/images/project-ecoroute.jpg',
-    technologies: ['React', 'C++', 'Python', 'Leaflet.js', 'OpenStreetMap API'],
-    problem: 'Municipal sanitation fleets operate on static fixed schedules, resulting in fuel wastage visiting half-empty bins while overflowing containers trigger environmental hazards.',
-    solution: 'Designed a hybrid heuristic solver (Simulated Annealing + Nearest Neighbor) implemented in C++ and wrapped with a Python API, cutting simulated fleet fuel consumption by 28%.',
-    architecture: {
-      overview: 'C++ core optimization binary compiled with WebAssembly / Python bindings serving dynamic geocoded routes to a React/Leaflet mapping UI.',
-      steps: [
-        {
-          title: 'Bin Telemetry',
-          desc: 'Simulated sensor inputs report fill percentages across 120 city collection nodes.',
-          icon: 'Radio'
-        },
-        {
-          title: 'Graph Formulation',
-          desc: 'Constructs weighted directed graph with live road traffic costs.',
-          icon: 'Network'
-        },
-        {
-          title: 'Route Optimization',
-          desc: 'Solves CVRP with capacity constraints using C++ simulated annealing.',
-          icon: 'Compass'
-        }
-      ]
-    },
-    engineeringDecisions: [
-      'Core graph algorithm written in C++ with bitmask optimization for 40x speedup over pure Python routing loops.',
-      'Implemented vector tile caching for Leaflet mapping to ensure smooth rendering on low-end municipal tablets.'
-    ],
-    keyFeatures: [
-      'Dynamic turn-by-turn fleet dispatch map with waypoint reordering',
-      'Carbon footprint reduction tracker with exportable CSV reports',
-      'Emergency overflow alert queue with priority vehicle rerouting'
-    ],
-    futureRoadmap: [
-      'Hardware IoT LoRaWAN fill-level sensor transceiver prototype'
-    ],
-    links: {
-      github: 'https://github.com/vasanthabalan/ecoroute-logistics',
-      demo: '#',
-      docs: '#'
-    }
-  },
-  {
-    id: 'cybersentinel',
-    title: 'CyberSentinel Radar',
-    category: 'Cybersecurity',
-    tagline: 'Automated Port Scanner & Vulnerability Footprint Analyzer',
-    description: 'A network reconnaissance utility and web security auditor that performs asynchronous port probing, TLS certificate validation, and CVE vulnerability fingerprinting.',
-    status: 'Completed',
-    badge: 'SECURITY TOOL',
-    image: './assets/images/project-cybersentinel.jpg',
-    technologies: ['Go', 'Python', 'React', 'Docker', 'Nmap Engine'],
-    problem: 'Small teams and student builders deploy web applications with exposed debug ports, default credentials, and deprecated SSL/TLS cipher suites.',
-    solution: 'Built an automated scanning orchestrator that checks target IP/domains against the OWASP Top 10 footprint and produces formatted remediation roadmaps.',
-    architecture: {
-      overview: 'Containerized scanner engine dispatching concurrent async TCP socket probes with structured JSON report generation.',
-      steps: [
-        {
-          title: 'DNS Resolution',
-          desc: 'Performs DNS enumeration, subdomain mapping, and WHOIS lookup.',
-          icon: 'Globe'
-        },
-        {
-          title: 'Port Fingerprinting',
-          desc: 'Runs non-intrusive SYN/ACK port sweeps across top 1,000 common services.',
-          icon: 'Server'
-        },
-        {
-          title: 'Security Scoring',
-          desc: 'Assigns CVSS-style risk ratings with specific configuration remediation snippets.',
-          icon: 'ShieldAlert'
-        }
-      ]
-    },
-    engineeringDecisions: [
-      'Implemented rate-limiting token bucket algorithms to prevent accidental network flooding or firewall blacklisting.',
-      'Isolated scanner execution in sandboxed Docker containers for reproducibility and host security.'
-    ],
-    keyFeatures: [
-      'Visual port status map with service banner extraction',
-      'TLS certificate expiration and cipher strength audit',
-      'One-click PDF/JSON audit report export for security compliance'
-    ],
-    futureRoadmap: [
-      'Automated CI/CD GitHub Action plugin for pre-deployment security regression checks'
-    ],
-    links: {
-      github: 'https://github.com/vasanthabalan/cybersentinel',
-      demo: '#',
-      docs: '#'
-    }
-  }
 ];
 
-export const HACKATHON_SPRINT: HackathonExperience[] = [
-  {
-    id: 'hack-1',
-    title: 'National AI & Cloud Hackathon',
-    track: 'AI × Social Impact',
-    timeframe: '36 Hours Non-Stop',
-    tagline: 'Zero to Production MVP under High Stakes',
-    projectBuilt: 'AgriShield AI — Multilingual Crop Pathology Engine',
-    keyChallenge: 'Running heavy neural network inference within 800ms on low-cost serverless compute.',
-    takeaway: 'Model quantization (ONNX) and aggressive client-side caching are critical for lightning-fast live judging demos.',
-    tech: ['React', 'Flask', 'PyTorch', 'ONNX', 'Tailwind']
-  },
-  {
-    id: 'hack-2',
-    title: 'Smart City & Urban Systems Hackathon',
-    track: 'Smart Infrastructure & IoT',
-    timeframe: '24 Hours Sprint',
-    tagline: 'Solving Real Municipal Complexities with Algorithmic Rigor',
-    projectBuilt: 'EcoRoute Logistics — Graph-Based CVRP Solver',
-    keyChallenge: 'Calculating optimal routes across 100+ simulated GPS nodes without freezing browser map rendering.',
-    takeaway: 'Offloading core NP-hard graph heuristics to compiled C++ subroutines yielded instant 40x speedups.',
-    tech: ['C++', 'Python', 'Leaflet', 'WebAssembly', 'OpenStreetMap']
-  },
-  {
-    id: 'hack-3',
-    title: 'FinTech Innovation Challenge',
-    track: 'Next-Gen Wealth Intelligence',
-    timeframe: '48 Hours Build',
-    tagline: 'Bridging Quant Math with Consumer-Grade UX',
-    projectBuilt: 'FinPulse — Risk Covariance & Monte Carlo Simulator',
-    keyChallenge: 'Ensuring 1,000 statistical iterations execute seamlessly without locking the React main thread.',
-    takeaway: 'Web Workers and responsive SVG charting make complex financial modeling instantly digestible to non-technical judges.',
-    tech: ['TypeScript', 'React', 'Web Workers', 'Node.js', 'Chart.js']
-  }
-];
+export const HACKATHON_SPRINT: HackathonExperience[] = [];
 
 export const BUILD_LOG: BuildLogItem[] = [
   {

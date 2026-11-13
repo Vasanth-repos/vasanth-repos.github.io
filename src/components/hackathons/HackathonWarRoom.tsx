@@ -72,55 +72,127 @@ export const HackathonWarRoom: React.FC = () => {
           </div>
         </Reveal>
 
-        {/* Hackathon Build Dossiers Grid - Equal Heights */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          {HACKATHON_SPRINT.map((hack, idx) => (
-            <Reveal key={hack.id} direction="up" delay={idx * 70} duration={500} className="h-full">
+        {/* Hackathon Build Dossiers or Core Competency Pillars */}
+        {HACKATHON_SPRINT.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            {HACKATHON_SPRINT.map((hack, idx) => (
+              <Reveal key={hack.id} direction="up" delay={idx * 70} duration={500} className="h-full">
+                <SpotlightCard className="p-5 sm:p-6 hud-corner flex flex-col justify-between h-full space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between text-xs font-mono">
+                      <span className="px-2 py-0.5 rounded bg-amber-950/40 border border-amber-500/30 text-amber-300">
+                        {hack.timeframe}
+                      </span>
+                      <span className="text-zinc-500 text-[11px]">{hack.track}</span>
+                    </div>
+
+                    <h3 className="text-base sm:text-lg font-bold font-mono text-white leading-snug">
+                      {hack.title}
+                    </h3>
+
+                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 text-xs font-mono text-zinc-300">
+                      <span className="text-amber-400 font-bold">PROJECT: </span>
+                      {hack.projectBuilt}
+                    </div>
+
+                    <div className="space-y-1.5 text-xs font-mono text-zinc-400">
+                      <div>
+                        <span className="text-zinc-500">Critical Challenge: </span>
+                        <span className="text-zinc-300">{hack.keyChallenge}</span>
+                      </div>
+                      <div>
+                        <span className="text-emerald-400">Key Takeaway: </span>
+                        <span className="text-zinc-300">{hack.takeaway}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-3 border-t border-white/5 flex flex-wrap gap-1">
+                    {hack.tech.map((t, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-400"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </SpotlightCard>
+              </Reveal>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            <Reveal direction="up" delay={0} duration={500} className="h-full">
               <SpotlightCard className="p-5 sm:p-6 hud-corner flex flex-col justify-between h-full space-y-4">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="px-2 py-0.5 rounded bg-amber-950/40 border border-amber-500/30 text-amber-300">
-                      {hack.timeframe}
+                      VELOCITY
                     </span>
-                    <span className="text-zinc-500 text-[11px]">{hack.track}</span>
+                    <span className="text-zinc-500 text-[11px]">Sprint Pipeline</span>
                   </div>
-
                   <h3 className="text-base sm:text-lg font-bold font-mono text-white leading-snug">
-                    {hack.title}
+                    Zero to Working MVP in 24–48 Hours
                   </h3>
-
-                  <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 text-xs font-mono text-zinc-300">
-                    <span className="text-amber-400 font-bold">PROJECT: </span>
-                    {hack.projectBuilt}
-                  </div>
-
-                  <div className="space-y-1.5 text-xs font-mono text-zinc-400">
-                    <div>
-                      <span className="text-zinc-500">Critical Challenge: </span>
-                      <span className="text-zinc-300">{hack.keyChallenge}</span>
-                    </div>
-                    <div>
-                      <span className="text-emerald-400">Key Takeaway: </span>
-                      <span className="text-zinc-300">{hack.takeaway}</span>
-                    </div>
-                  </div>
+                  <p className="text-xs font-mono text-zinc-400 leading-relaxed">
+                    Hackathons are about relentless execution. Turning unrefined problem statements into working, responsive, and deployable systems without getting bogged down in unnecessary boilerplate.
+                  </p>
                 </div>
-
-                {/* Technologies */}
                 <div className="pt-3 border-t border-white/5 flex flex-wrap gap-1">
-                  {hack.tech.map((t, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-400"
-                    >
-                      {t}
-                    </span>
-                  ))}
+                  <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-amber-400">Rapid Prototyping</span>
+                  <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-400">Full-Stack</span>
                 </div>
               </SpotlightCard>
             </Reveal>
-          ))}
-        </div>
+
+            <Reveal direction="up" delay={70} duration={500} className="h-full">
+              <SpotlightCard className="p-5 sm:p-6 hud-corner flex flex-col justify-between h-full space-y-4">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="px-2 py-0.5 rounded bg-amber-950/40 border border-amber-500/30 text-amber-300">
+                      DIFFERENTIATOR
+                    </span>
+                    <span className="text-zinc-500 text-[11px]">Technical Rigor</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold font-mono text-white leading-snug">
+                    Deep Algorithms Over Wrapper UIs
+                  </h3>
+                  <p className="text-xs font-mono text-zinc-400 leading-relaxed">
+                    Winning hackathon prototypes require genuine technical spine — applying algorithmic optimizations, custom state engines, and practical local/quantized AI over superficial skins.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-white/5 flex flex-wrap gap-1">
+                  <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-amber-400">Algorithmic Spine</span>
+                  <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-400">Local AI</span>
+                </div>
+              </SpotlightCard>
+            </Reveal>
+
+            <Reveal direction="up" delay={140} duration={500} className="h-full">
+              <SpotlightCard className="p-5 sm:p-6 hud-corner flex flex-col justify-between h-full space-y-4">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="px-2 py-0.5 rounded bg-amber-950/40 border border-amber-500/30 text-amber-300">
+                      RELIABILITY
+                    </span>
+                    <span className="text-zinc-500 text-[11px]">Live Demos</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold font-mono text-white leading-snug">
+                    Hardened Stage-Ready Demo Paths
+                  </h3>
+                  <p className="text-xs font-mono text-zinc-400 leading-relaxed">
+                    Demos break when teams cut silent corners. Prioritizing strict error boundaries, optimistic client responses, and offline fallbacks guarantees high-stakes presentation success.
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-white/5 flex flex-wrap gap-1">
+                  <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-amber-400">Zero Crash Policy</span>
+                  <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-400">Live Resilience</span>
+                </div>
+              </SpotlightCard>
+            </Reveal>
+          </div>
+        )}
 
       </div>
     </section>

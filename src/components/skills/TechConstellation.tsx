@@ -75,8 +75,8 @@ export const TechConstellation: React.FC = () => {
                     <span className="text-emerald-400 font-bold">ACTIVE DEPLOY</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">ACADEMIC BASE:</span>
-                    <span className="text-white">CIT CHENNAI (CSE)</span>
+                    <span className="text-zinc-500">ENGINEERING CORE:</span>
+                    <span className="text-white">FULL-STACK & LOCAL AI</span>
                   </div>
                 </div>
               </div>
