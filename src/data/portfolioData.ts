@@ -18,7 +18,8 @@ export const PERSONAL_INFO = {
     email: 'vasanthabalanb4@gmail.com',
   },
   images: {
-    heroHud: './assets/images/vasanthabalan-hero.png',
+    heroHud: './assets/images/vasanthabalan-portrait-bw.jpg',
+    heroColor: './assets/images/vasanthabalan-portrait-color.jpg',
     crimsonGlow: './assets/images/profile-crimson-glow.jpg',
     editorialStairs: './assets/images/profile-editorial-stairs.jpg',
     studioDark: './assets/images/profile-studio-dark.jpg',

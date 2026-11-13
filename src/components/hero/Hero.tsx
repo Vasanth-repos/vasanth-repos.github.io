@@ -151,25 +151,39 @@ export const Hero: React.FC<HeroProps> = ({ onStartTour }) => {
 
           </div>
 
-          {/* Right Column: Seamlessly Blended Hero Portrait */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-end relative">
-            <Reveal direction="fade" delay={120} duration={600} className="w-full max-w-sm sm:max-w-md relative flex items-center justify-center">
+          {/* Right Column: Steve Jobs Style Editorial Portrait Card */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
+            <Reveal direction="fade" delay={120} duration={600} className="w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[380px] relative flex items-center justify-center">
               
               {/* Atmospheric Cyber Back-Glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-[var(--accent-color)]/20 blur-[100px] pointer-events-none -z-10" />
               <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-cyan-500/15 blur-[90px] pointer-events-none -z-10" />
 
-              {/* The Blended Silhouette (Cropped at pocket level, fading seamlessly into background) */}
-              <div className="relative w-full flex justify-center items-end select-none">
+              {/* The Framed Portrait Card (Steve Jobs Reference Layout) */}
+              <div className="relative w-full aspect-[395/560] rounded-3xl overflow-hidden border border-white/10 hover:border-white/25 bg-[#08090c] shadow-[0_25px_60px_-12px_rgba(0,0,0,0.95)] transition-all duration-500 group select-none">
+                
+                {/* Monochrome Steve Jobs Style Portrait (Default) */}
                 <img
                   src={PERSONAL_INFO.images.heroHud}
                   alt="Vasanthabalan B — Software Systems Engineer"
-                  className="w-full max-w-[340px] sm:max-w-[420px] h-auto object-contain drop-shadow-[0_20px_45px_rgba(0,0,0,0.95)] filter contrast-[1.04]"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="eager"
                 />
 
-                {/* Seamless Bottom Gradient Blend into Hero Section Background */}
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#060709] via-[#060709]/80 to-transparent pointer-events-none" />
+                {/* Studio Color Overlay (Smooth Reveal on Hover) */}
+                <img
+                  src={PERSONAL_INFO.images.heroColor || PERSONAL_INFO.images.heroHud}
+                  alt="Vasanthabalan B (Studio Color)"
+                  className="absolute inset-0 w-full h-full object-cover object-top opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out pointer-events-none group-hover:scale-105 transition-transform duration-700"
+                  loading="eager"
+                />
+
+                {/* Subtle Inset Rim Ring */}
+                <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10 group-hover:ring-white/20 pointer-events-none transition-colors" />
+
+                {/* Soft Bottom Card Vignette */}
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#08090c] to-transparent pointer-events-none" />
+
               </div>
 
             </Reveal>
