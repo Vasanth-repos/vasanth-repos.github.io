@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowRight, Terminal as TerminalIcon, ChevronDown, Play, CheckCircle2, Sparkles } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Terminal as TerminalIcon, ChevronDown, Play, CheckCircle2 } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 import { ParticleCanvas } from './ParticleCanvas';
 import { playCyberSound } from '../ui/AudioToggle';
@@ -11,19 +11,6 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onStartTour }) => {
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -12;
-    setTilt({ x, y });
-  };
-
-  const handleMouseLeave = () => {
-    setTilt({ x: 0, y: 0 });
-  };
-
   const scrollToNextSection = () => {
     playCyberSound('click');
     const target = document.getElementById('terminal') || document.getElementById('metrics');
@@ -164,70 +151,27 @@ export const Hero: React.FC<HeroProps> = ({ onStartTour }) => {
 
           </div>
 
-          {/* Right Column: 3D Tilt HUD Hero Portrait Card */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <Reveal direction="zoom" delay={120} duration={500} className="w-full max-w-sm sm:max-w-md">
-              <div
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                style={{
-                  transform: `perspective(1000px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
-                  transition: 'transform 0.15s ease-out',
-                }}
-                className="relative w-full rounded-2xl p-1 bg-gradient-to-b from-white/20 via-[var(--accent-color)]/30 to-transparent shadow-2xl group hud-corner"
-              >
-                {/* Inner Card Frame */}
-                <div className="relative rounded-2xl bg-[#0a0c14] overflow-hidden border border-white/15">
-                  
-                  {/* Portrait Media with HUD Reticle */}
-                  <div className="relative aspect-[3/3.8] overflow-hidden bg-black flex items-center justify-center">
-                    <img
-                      src={PERSONAL_INFO.images.heroHud}
-                      alt="Vasanthabalan B — Hero Portrait"
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                    />
+          {/* Right Column: Seamlessly Blended Hero Portrait */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-end relative">
+            <Reveal direction="fade" delay={120} duration={600} className="w-full max-w-sm sm:max-w-md relative flex items-center justify-center">
+              
+              {/* Atmospheric Cyber Back-Glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-[var(--accent-color)]/20 blur-[100px] pointer-events-none -z-10" />
+              <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-cyan-500/15 blur-[90px] pointer-events-none -z-10" />
 
-                    {/* Gradient & Scanline Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c14] via-transparent to-transparent opacity-80" />
-                    <div className="scanline-overlay opacity-25" />
+              {/* The Blended Silhouette (Cropped at pocket level, fading seamlessly into background) */}
+              <div className="relative w-full flex justify-center items-end select-none">
+                <img
+                  src={PERSONAL_INFO.images.heroHud}
+                  alt="Vasanthabalan B — Software Systems Engineer"
+                  className="w-full max-w-[340px] sm:max-w-[420px] h-auto object-contain drop-shadow-[0_20px_45px_rgba(0,0,0,0.95)] filter contrast-[1.04]"
+                  loading="eager"
+                />
 
-                    {/* HUD Targeting Telemetry Header */}
-                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-zinc-300">
-                      <span className="px-2.5 py-0.5 rounded bg-black/75 backdrop-blur-md border border-white/20">
-                        TARGET: SDE // CIT CHENNAI
-                      </span>
-                      <span className="flex items-center gap-1.5 text-emerald-400 font-bold px-2.5 py-0.5 rounded bg-black/75 border border-emerald-500/30">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                        ONLINE
-                      </span>
-                    </div>
-
-                    {/* Lower Card Badge */}
-                    <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-black/85 backdrop-blur-md border border-white/15">
-                      <div className="flex items-center justify-between text-xs font-mono">
-                        <div>
-                          <div className="text-white font-bold tracking-wider uppercase flex items-center gap-1.5">
-                            <span>VASANTHABALAN B</span>
-                            <span className="w-1.5 h-1.5 rounded-full dynamic-accent-bg" />
-                          </div>
-                          <div className="text-[10px] text-zinc-400 mt-0.5">Focus. Build. Create. // Aspiring SDE</div>
-                        </div>
-                        <Sparkles className="w-4 h-4 dynamic-accent shrink-0" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Telemetry Footer Strip on Card */}
-                  <div className="p-3 bg-[#0d101a] border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-zinc-400">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full dynamic-accent-bg" />
-                      <span>400+ LEETCODE // C++ STL</span>
-                    </span>
-                    <span className="text-emerald-400 font-bold">READY TO DEPLOY</span>
-                  </div>
-
-                </div>
+                {/* Seamless Bottom Gradient Blend into Hero Section Background */}
+                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#060709] via-[#060709]/80 to-transparent pointer-events-none" />
               </div>
+
             </Reveal>
           </div>
 
